@@ -779,16 +779,14 @@ footer {
   <div>
     <h2 class="contact-title"><span class="grad-word">Got a project?<br>Let's talk.</span></h2>
     <form
-      name="contact"
+      action="https://formspree.io/f/mrejbkjw"
       method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
       class="contact-form"
     >
-      <input type="hidden" name="form-name" value="contact">
       <p class="sr-only">
-        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+        <label>Don't fill this out if you're human: <input name="_gotcha" tabindex="-1" autocomplete="off"></label>
       </p>
+      <input type="hidden" name="_subject" value="New portfolio enquiry">
 
       <div class="contact-grid">
         <label class="contact-field">
