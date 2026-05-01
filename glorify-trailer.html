@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glorify: Who is Jesus Trailer — Stephanie Wieland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg: #ffffff; --surface: #f4f4f6; --ink: #0e0e0f; --ink-50: rgba(14,14,15,0.5); --ink-30: rgba(14,14,15,0.3); --ink-12: rgba(14,14,15,0.08); --grad: linear-gradient(90deg, #d4845a 0%, #c97b8e 40%, #7eb8d4 75%, #82c9a0 100%); --pad: 300px; --media-max: 1320px; --media-gutter: clamp(16px, 2.5vw, 32px); --sans: 'Inter', system-ui, sans-serif; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 20px var(--pad); position: sticky; top: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid var(--ink-12); }
+.nav-logo { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; color: var(--ink); text-decoration: none; }
+.nav-back { font-size: 14px; font-weight: 500; color: var(--ink-50); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.15s; }
+.nav-back:hover { color: var(--ink); }
+.nav-cta { background: var(--ink); color: #fff; font-size: 13px; font-weight: 500; padding: 8px 18px; border-radius: 100px; text-decoration: none; transition: opacity 0.15s; }
+.nav-cta:hover { opacity: 0.82; }
+.hero { padding: clamp(56px, 8vh, 100px) var(--pad) clamp(40px, 6vh, 72px); border-bottom: 1px solid var(--ink-12); }
+.hero-cat { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; color: var(--ink-30); text-transform: uppercase; margin-bottom: 16px; }
+.hero-title { font-size: clamp(36px, 6vw, 88px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.95; color: var(--ink); margin-bottom: 32px; }
+.hero-title .grad { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+.meta-item { display: flex; flex-direction: column; gap: 4px; }
+.meta-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: var(--ink-30); text-transform: uppercase; }
+.meta-value { font-size: 14px; font-weight: 500; color: var(--ink); }
+.media-full { width: 100%; background: var(--surface); overflow: hidden; padding: clamp(40px,6vw,80px) var(--media-gutter); }
+.media-full img, .media-full video { width: 100%; max-width: var(--media-max); display: block; margin: 0 auto; border-radius: 12px; object-fit: contain; height: auto; cursor: zoom-in; }
+.media-full .placeholder { width: 100%; aspect-ratio: 16/7; display: flex; align-items: center; justify-content: center; font-size: 11px; letter-spacing: 0.12em; color: var(--ink-30); text-transform: uppercase; }
+.content { padding: clamp(56px, 8vw, 96px) clamp(24px, 4vw, 64px); max-width: 1520px; margin: 0 auto; }
+.content-grid { display: grid; grid-template-columns: minmax(120px, 0.75fr) minmax(0, 2.4fr); gap: clamp(32px, 5vw, 88px); margin-bottom: clamp(48px, 7vw, 80px); align-items: start; }
+.content-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; color: var(--ink-30); text-transform: uppercase; padding-top: 4px; }
+.content-body { font-size: 16px; color: var(--ink-50); line-height: 1.8; max-width: 920px; }
+.content-body p + p { margin-top: 16px; }
+.content-body h3 { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 12px; margin-top: 32px; }
+.content-body ul { margin-top: 12px; padding-left: 0; list-style: none; }
+.content-body ul li { font-size: 16px; color: var(--ink-50); line-height: 1.7; padding: 8px 0; border-bottom: 1px solid var(--ink-12); display: flex; gap: 12px; }
+.content-body ul li::before { content: '—'; color: var(--ink-30); flex-shrink: 0; }
+.media-grid { display: grid; gap: 16px; width: min(calc(100vw - (var(--media-gutter) * 2)), var(--media-max)); margin: clamp(40px, 6vw, 72px) 0; position: relative; left: 50%; transform: translateX(-50%); }
+.media-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.media-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.media-item { background: var(--surface); overflow: hidden; border-radius: 12px; }
+.media-item img { width: 100%; height: auto; display: block; object-fit: contain; cursor: zoom-in; } .media-item video { width: 100%; height: auto; display: block; max-height: none; object-fit: contain; }
+.media-item .placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 10px; letter-spacing: 0.12em; color: var(--ink-30); text-transform: uppercase; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+.tag { font-size: 11px; font-weight: 500; color: var(--ink-50); border: 1px solid var(--ink-12); padding: 5px 14px; border-radius: 100px; }
+.next-project { padding: clamp(56px, 8vw, 96px) var(--pad); border-top: 1px solid var(--ink-12); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.next-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; color: var(--ink-30); text-transform: uppercase; margin-bottom: 8px; }
+.next-title { font-size: clamp(20px, 3vw, 32px); font-weight: 900; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; display: block; transition: opacity 0.15s; }
+.next-title:hover { opacity: 0.6; }
+.btn-primary { background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 100px; text-decoration: none; transition: opacity 0.15s; }
+.btn-primary:hover { opacity: 0.82; }
+footer { padding: 24px var(--pad); border-top: 1px solid var(--ink-12); display: flex; justify-content: space-between; }
+.footer-l, .footer-r { font-size: 13px; color: var(--ink-30); }
+@media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; gap: 16px; } .media-grid.cols-2, .media-grid.cols-3 { grid-template-columns: 1fr; } }
+
+/* lightbox */
+.lb { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; padding:24px; }
+.lb.open { display:flex; }
+.lb img { max-width:90vw; max-height:90vh; border-radius:8px; object-fit:contain; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">STEPHANIE WIELAND</a>
+  <a href="index.html#work" class="nav-back">← Back to work</a>
+  <a href="index.html#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-cat">Motion Design · Glorify App</p>
+  <h1 class="hero-title">Who is Jesus</h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Motion Designer</span></div>
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Glorify App</span></div>
+    <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">TikTok, Instagram Reels</span></div>
+    <div class="meta-item"><span class="meta-label">Tools</span><span class="meta-value">After Effects, Illustrator</span></div>
+  </div>
+</section>
+
+<div class="media-full" style="display:flex;justify-content:center;">
+  <video controls playsinline preload="metadata" style="width:min(100%, 560px);border-radius:24px;display:block;">
+    <source src="assets/23_Courses_Trailer_Who_is_Jesus.mov" type="video/mp4">
+  </video>
+</div>
+
+<div class="content">
+
+  <div class="content-grid">
+    <span class="content-label">Overview</span>
+    <div class="content-body">
+      <p>Glorify wanted to grow their audience on TikTok and Instagram Reels by showcasing the depth and quality of their courses. The challenge: make content about Christian faith feel visually compelling to people who might never have downloaded the app.</p>
+      <p>We created four motion graphic trailers. "Who is Jesus" was the first, and the one that set the creative direction for the whole series.</p>
+    </div>
+  </div>
+
+  <div class="media-grid cols-2">
+    <div class="media-item" style="aspect-ratio:auto;">
+      <img src="assets/1f2ba66b-9a2a-4deb-b03c-9f206779a7e7_rw_1920-1.png" alt="Who is Jesus final frames" style="width:100%;display:block;height:auto;">
+    </div>
+    <div class="media-item" style="aspect-ratio:auto;">
+      <img src="assets/1f2ba66b-9a2a-4deb-b03c-9f206779a7e7_rw_1920.png" alt="Who is Jesus final frames" style="width:100%;display:block;height:auto;">
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <span class="content-label">Creative approach</span>
+    <div class="content-body">
+      <p>We used a cut-out animation style, vintage-inspired collage that blends historical imagery with modern symbols. Bible, doves, Jerusalem streets, a car, a globe, a balloon. The past and present in the same frame, which mirrors the question the trailer is asking.</p>
+      <p>The animation follows the voiceover beat by beat. Each frame builds curiosity rather than answering it, leading to a conclusion that makes you want to find out more.</p>
+      <h3>Visual system</h3>
+      <ul>
+        <li>Cut-out collage aesthetic with hand-crafted texture</li>
+        <li>Earthy, muted palette: warm yellows, soft reds, dusty blues</li>
+        <li>Crumpled paper textures and geometric shapes for depth</li>
+        <li>Symbolic imagery that works across cultures and backgrounds</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="media-grid cols-2">
+    <div class="media-item" style="aspect-ratio:auto;">
+      <img src="assets/56fbb21c-d813-4df0-9495-a178de998d26_rw_1920.png" alt="Moodboard and style exploration" style="width:100%;display:block;height:auto;">
+    </div>
+    <div class="media-item" style="aspect-ratio:auto;">
+      <img src="assets/df14679d-3f82-4f92-ad43-d4c12e1cb5d8_rw_1920.png" alt="Storyboard explorations" style="width:100%;display:block;height:auto;">
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <span class="content-label">Process</span>
+    <div class="content-body">
+      <p>The project started with deep research into cut-out collage aesthetics, building a visual language that felt both timeless and energetic. The moodboard pulled together references across Bauhaus, vintage advertising, and contemporary collage work before a single frame was animated.</p>
+      <p>From there, we storyboarded the full sequence: every voiceover beat mapped to a visual moment, ensuring the story landed emotionally even on silent autoplay.</p>
+    </div>
+  </div>
+
+  <div class="media-grid" style="grid-template-columns:1fr;">
+    <div class="media-item" style="aspect-ratio:auto;">
+      <img src="assets/8d5ad7d9-8919-4aee-8210-7b87dcb354c7_rw_1920.png" alt="Process and planning board" style="width:100%;display:block;height:auto;">
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <span class="content-label">Outcome</span>
+    <div class="content-body">
+      <p>The series drove measurable growth in app downloads and social engagement. The cut-out style became a recognisable part of Glorify's content identity on short-form platforms, distinctive enough to stop the scroll without feeling out of place.</p>
+      <div class="tags">
+        <span class="tag">Motion Design</span>
+        <span class="tag">After Effects</span>
+        <span class="tag">TikTok</span>
+        <span class="tag">Instagram Reels</span>
+        <span class="tag">Glorify</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="next-project">
+  <div>
+    <p class="next-label">Next project</p>
+    <a href="google-maps.html" class="next-title">Google Maps Sensory →</a>
+  </div>
+  <a href="index.html#work" class="btn-primary">All work</a>
+</div>
+
+<footer>
+  <span class="footer-l">© 2026 Stephanie Wieland</span>
+  <span class="footer-r">London · International</span>
+</footer>
+
+<div class="lb" id="lb"><img id="lb-img" src="" alt=""></div>
+<script>
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lb-img');
+document.querySelectorAll('.media-item img, .media-full img').forEach(img => {
+  img.addEventListener('click', () => { lbImg.src = img.src; lb.classList.add('open'); });
+});
+lb.addEventListener('click', () => lb.classList.remove('open'));
+</script>
+</body>
+</html>
