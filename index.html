@@ -585,17 +585,31 @@ footer {
   .cap-grid { grid-template-columns: 1fr 1fr; }
   .about-inner { grid-template-columns: 1fr; gap: 32px; }
   .about-photo { max-width: 420px; }
+  .track-header { flex-wrap: wrap; row-gap: 10px; }
+  .track-rule { order: 3; width: 100%; flex-basis: 100%; }
+}
+
+@media (max-width: 900px) {
+  nav { gap: 16px; align-items: flex-start; }
+  .nav-left { display: none; }
+  .nav-right { flex-wrap: wrap; justify-content: flex-end; }
 }
 
 @media (max-width: 640px) {
-  .nav-left { display: none; }
   .nav-right a:not(.nav-cta) { display: none; }
   .nav-divider { display: none; }
+  .nav-right { width: 100%; justify-content: flex-end; }
+  .hero-bottom { align-items: stretch; }
+  .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
   .hero-title { font-size: clamp(40px, 12vw, 80px); max-width: none; }
+  .track-header { gap: 12px; }
+  .track-name { white-space: normal; }
+  .proj-card { flex-basis: min(82vw, 320px); }
   .cap-grid { grid-template-columns: 1fr; }
   .built-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .contact-title { white-space: normal; font-size: clamp(28px, 8vw, 44px); }
+  .about-track-header { flex-wrap: wrap; }
   footer { flex-direction: column; gap: 8px; }
 }
 </style>
