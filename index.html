@@ -1138,45 +1138,64 @@ footer {
           if (!idleStarted) {
             idleStarted = true;
             idleTweens.push(window.gsap.to(heroBg, {
-              scale: 1.04,
-              duration: 18,
-              ease: "none",
+              scale: 1.11,
+              y: -6,
+              duration: 11.5,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
               transformOrigin: "center center",
               paused: true
             }));
             idleTweens.push(window.gsap.to(heroMoon, {
-              y: -4,
-              scale: 1.06,
-              duration: 15.5,
-              ease: "none",
+              x: 6,
+              y: -10,
+              scale: 1.16,
+              duration: 8.2,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
               paused: true
             }));
             idleTweens.push(window.gsap.to([heroStarsA, heroStarsB], {
-              scale: 1.085,
-              y: -3,
-              duration: 16.8,
-              ease: "none",
+              x: -4,
+              y: -8,
+              scale: 1.22,
+              duration: 9.6,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
               stagger: 0.2,
               paused: true
             }));
             idleTweens.push(window.gsap.to(heroShootingStar, {
-              scale: 1.05,
-              duration: 17.4,
-              ease: "none",
+              x: 8,
+              y: -5,
+              scale: 1.13,
+              duration: 10.4,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
               paused: true
             }));
             idleTweens.push(window.gsap.to(heroCloudA, {
-              x: cloudIdleShift,
-              scale: 1.028,
-              duration: 20.5,
-              ease: "none",
+              x: cloudIdleShift + 6,
+              y: 4,
+              scale: 1.1,
+              duration: 12.8,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
               paused: true
             }));
             idleTweens.push(window.gsap.to(heroCloudB, {
-              x: -cloudIdleShift,
-              scale: 1.026,
-              duration: 22.2,
-              ease: "none",
+              x: -(cloudIdleShift + 5),
+              y: -3,
+              scale: 1.095,
+              duration: 14.6,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
               paused: true
             }));
           }
@@ -1224,7 +1243,7 @@ footer {
     }
   }
 
-  const setupReplayReveal = ({ trigger, targets, from, to, threshold = 0.2, stagger = 0, extraEnter, extraLeave }) => {
+  const setupScrollDownReveal = ({ trigger, targets, from, to, threshold = 0.2, stagger = 0, extraEnter }) => {
     if (!trigger || !targets.length || reducedMotionQuery.matches || !window.gsap) {
       targets.forEach((target) => {
         if (!target) return;
@@ -1236,21 +1255,15 @@ footer {
 
     window.gsap.set(targets, from);
 
-    let visible = false;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !visible) {
-          visible = true;
-          window.gsap.to(targets, {
-            ...to,
-            stagger
-          });
-          if (extraEnter) extraEnter();
-        } else if (!entry.isIntersecting && visible) {
-          visible = false;
-          window.gsap.set(targets, from);
-          if (extraLeave) extraLeave();
-        }
+        if (!entry.isIntersecting) return;
+        window.gsap.to(targets, {
+          ...to,
+          stagger
+        });
+        if (extraEnter) extraEnter();
+        observer.disconnect();
       });
     }, { threshold });
 
@@ -1258,7 +1271,7 @@ footer {
   };
 
   if (capabilityItems.length) {
-    setupReplayReveal({
+    setupScrollDownReveal({
       trigger: document.querySelector(".capabilities"),
       targets: capabilityItems,
       from: { y: 42, opacity: 0 },
@@ -1270,7 +1283,7 @@ footer {
 
   if (!reducedMotionQuery.matches && window.gsap) {
     if (workCards.length) {
-      setupReplayReveal({
+      setupScrollDownReveal({
         trigger: document.querySelector(".work"),
         targets: workCards,
         from: { y: 28, opacity: 0 },
@@ -1281,7 +1294,7 @@ footer {
     }
 
     if (aboutBody && aboutPhoto) {
-      setupReplayReveal({
+      setupScrollDownReveal({
         trigger: document.querySelector(".about"),
         targets: [aboutBody, aboutPhoto],
         from: { opacity: 0 },
@@ -1290,16 +1303,12 @@ footer {
         extraEnter: () => {
           window.gsap.fromTo(aboutBody, { x: -24 }, { x: 0, duration: 0.85, ease: "power3.out", overwrite: "auto" });
           window.gsap.fromTo(aboutPhoto, { x: 24 }, { x: 0, duration: 0.95, ease: "power3.out", overwrite: "auto" });
-        },
-        extraLeave: () => {
-          window.gsap.set(aboutBody, { x: -24 });
-          window.gsap.set(aboutPhoto, { x: 24 });
         }
       });
     }
 
     if (contactInner) {
-      setupReplayReveal({
+      setupScrollDownReveal({
         trigger: document.querySelector(".contact"),
         targets: [contactInner],
         from: { y: 24, opacity: 0 },
