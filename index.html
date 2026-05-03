@@ -769,13 +769,13 @@ footer {
 
 <section class="hero">
   <div class="hero-scene" aria-hidden="true">
-    <img class="hero-layer hero-bg" src="assets/hero/bg.png" alt="">
-    <img class="hero-layer hero-stars-a" src="assets/hero/stars.png" alt="">
-    <img class="hero-layer hero-stars-b" src="assets/hero/stars2.png" alt="">
-    <img class="hero-layer hero-shooting-star" src="assets/hero/shootingstars.png" alt="">
-    <img class="hero-layer hero-cloud-a" src="assets/hero/cloud.png" alt="">
-    <img class="hero-layer hero-cloud-b" src="assets/hero/cloud2.png" alt="">
-    <img class="hero-moon" src="assets/hero/moon.png" alt="">
+    <img class="hero-layer hero-bg" src="assets/bg.png" alt="">
+    <img class="hero-layer hero-stars-a" src="assets/stars.png" alt="">
+    <img class="hero-layer hero-stars-b" src="assets/stars2.png" alt="">
+    <img class="hero-layer hero-shooting-star" src="assets/shootingstars.png" alt="">
+    <img class="hero-layer hero-cloud-a" src="assets/cloud.png" alt="">
+    <img class="hero-layer hero-cloud-b" src="assets/cloud2.png" alt="">
+    <img class="hero-moon" src="assets/moon.png" alt="">
   </div>
   <div class="hero-content">
     <h1 class="hero-title">Design, motion<br>and a bit of <span class="grad-word">magic</span>.</h1>
@@ -925,7 +925,7 @@ footer {
       <p>I'm Stephanie, motion designer, illustrator, and creative director based in London. I've spent years building visual systems for apps, brands, and campaigns that actually make people feel something.</p>
       <p>Growing up across five countries gave me something you can't learn in a classroom: the ability to read a room, adapt, and find what connects. That shows up in the work.</p>
       <p>Alongside client work I've started building my own things. Digital products designed and coded from the ground up. I'm curious about where creativity and technology meet, and I like working at that edge.</p>
-      <p>When I'm not designing I'm probably in a coffee shop, deep in a philosophy book, or convinced that one more iteration will make it perfect.</p>
+      <p>When I'm not designing I'm probably in a coffee shop, deep in a book, or convinced that one more iteration will make it perfect.</p>
       <p class="about-meta">London · International</p>
     </div>
 
@@ -1089,6 +1089,8 @@ footer {
       });
 
       const idleTweens = [];
+      let idleStarted = false;
+      let lastScrollY = window.scrollY || window.pageYOffset;
       const heroTimeline = window.gsap.timeline({ defaults: { overwrite: "auto" } });
       heroTimeline
         .to(heroCloudA, {
@@ -1133,57 +1135,85 @@ footer {
           ease: "power3.out"
         }, 0.02)
         .add(() => {
-          idleTweens.push(window.gsap.to(heroBg, {
-            scale: 1.04,
-            duration: 18,
-            ease: "none",
-            transformOrigin: "center center"
-          }));
-          idleTweens.push(window.gsap.to(heroMoon, {
-            y: -4,
-            scale: 1.06,
-            duration: 15.5,
-            ease: "none"
-          }));
-          idleTweens.push(window.gsap.to([heroStarsA, heroStarsB], {
-            scale: 1.085,
-            y: -3,
-            duration: 16.8,
-            ease: "none",
-            stagger: 0.2
-          }));
-          idleTweens.push(window.gsap.to(heroShootingStar, {
-            scale: 1.05,
-            duration: 17.4,
-            ease: "none"
-          }));
-          idleTweens.push(window.gsap.to(heroCloudA, {
-            x: cloudIdleShift,
-            scale: 1.028,
-            duration: 20.5,
-            ease: "none"
-          }));
-          idleTweens.push(window.gsap.to(heroCloudB, {
-            x: -cloudIdleShift,
-            scale: 1.026,
-            duration: 22.2,
-            ease: "none"
-          }));
+          if (!idleStarted) {
+            idleStarted = true;
+            idleTweens.push(window.gsap.to(heroBg, {
+              scale: 1.04,
+              duration: 18,
+              ease: "none",
+              transformOrigin: "center center",
+              paused: true
+            }));
+            idleTweens.push(window.gsap.to(heroMoon, {
+              y: -4,
+              scale: 1.06,
+              duration: 15.5,
+              ease: "none",
+              paused: true
+            }));
+            idleTweens.push(window.gsap.to([heroStarsA, heroStarsB], {
+              scale: 1.085,
+              y: -3,
+              duration: 16.8,
+              ease: "none",
+              stagger: 0.2,
+              paused: true
+            }));
+            idleTweens.push(window.gsap.to(heroShootingStar, {
+              scale: 1.05,
+              duration: 17.4,
+              ease: "none",
+              paused: true
+            }));
+            idleTweens.push(window.gsap.to(heroCloudA, {
+              x: cloudIdleShift,
+              scale: 1.028,
+              duration: 20.5,
+              ease: "none",
+              paused: true
+            }));
+            idleTweens.push(window.gsap.to(heroCloudB, {
+              x: -cloudIdleShift,
+              scale: 1.026,
+              duration: 22.2,
+              ease: "none",
+              paused: true
+            }));
+          }
+
+          idleTweens.forEach((tween) => {
+            tween.play();
+          });
         });
 
       const syncHeroToScroll = () => {
         const rect = hero.getBoundingClientRect();
-        const reverseProgress = Math.max(0, Math.min(1, (-rect.top) / Math.max(rect.height * 0.7, 1)));
-        const introProgress = 1 - reverseProgress;
+        const currentScrollY = window.scrollY || window.pageYOffset;
+        const scrollingUp = currentScrollY < lastScrollY;
+        lastScrollY = currentScrollY;
+        const heroVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+        const shouldReverse = rect.top <= -(rect.height * 0.18) && !scrollingUp;
 
-        if (!heroTimeline.isActive()) {
-          heroTimeline.pause();
-          heroTimeline.progress(introProgress, true);
+        if (!heroVisible) {
+          return;
         }
 
-        idleTweens.forEach((tween) => {
-          tween.paused(reverseProgress > 0.02);
-        });
+        if (shouldReverse) {
+          idleTweens.forEach((tween) => tween.pause());
+          if (!heroTimeline.reversed()) {
+            heroTimeline.timeScale(1.25);
+            heroTimeline.reverse();
+          }
+        } else {
+          if (heroTimeline.reversed() || heroTimeline.progress() < 1) {
+            heroTimeline.timeScale(1.15);
+            heroTimeline.play();
+          }
+        }
+
+        if (heroTimeline.progress() >= 0.999 && !heroTimeline.isActive()) {
+          idleTweens.forEach((tween) => tween.play());
+        }
       };
 
       heroTimeline.eventCallback("onComplete", () => {
@@ -1194,121 +1224,88 @@ footer {
     }
   }
 
-  if (capabilityItems.length) {
-    if (reducedMotionQuery.matches || !window.gsap) {
-      capabilityItems.forEach((item) => {
-        item.style.opacity = "1";
-        item.style.transform = "none";
+  const setupReplayReveal = ({ trigger, targets, from, to, threshold = 0.2, stagger = 0, extraEnter, extraLeave }) => {
+    if (!trigger || !targets.length || reducedMotionQuery.matches || !window.gsap) {
+      targets.forEach((target) => {
+        if (!target) return;
+        target.style.opacity = "1";
+        target.style.transform = "none";
       });
-    } else {
-      window.gsap.set(capabilityItems, {
-        y: 42,
-        opacity: 0
-      });
-
-      const capabilityObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          window.gsap.to(capabilityItems, {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: "power3.out",
-            stagger: 0.22
-          });
-          observer.disconnect();
-        });
-      }, {
-        threshold: 0.28
-      });
-
-      capabilityObserver.observe(document.querySelector(".capabilities"));
+      return;
     }
+
+    window.gsap.set(targets, from);
+
+    let visible = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !visible) {
+          visible = true;
+          window.gsap.to(targets, {
+            ...to,
+            stagger
+          });
+          if (extraEnter) extraEnter();
+        } else if (!entry.isIntersecting && visible) {
+          visible = false;
+          window.gsap.set(targets, from);
+          if (extraLeave) extraLeave();
+        }
+      });
+    }, { threshold });
+
+    observer.observe(trigger);
+  };
+
+  if (capabilityItems.length) {
+    setupReplayReveal({
+      trigger: document.querySelector(".capabilities"),
+      targets: capabilityItems,
+      from: { y: 42, opacity: 0 },
+      to: { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
+      threshold: 0.28,
+      stagger: 0.22
+    });
   }
 
   if (!reducedMotionQuery.matches && window.gsap) {
     if (workCards.length) {
-      window.gsap.set(workCards, {
-        y: 28,
-        opacity: 0
+      setupReplayReveal({
+        trigger: document.querySelector(".work"),
+        targets: workCards,
+        from: { y: 28, opacity: 0 },
+        to: { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+        threshold: 0.18,
+        stagger: 0.08
       });
-
-      const workObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          window.gsap.to(workCards, {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power3.out",
-            stagger: 0.08
-          });
-          observer.disconnect();
-        });
-      }, {
-        threshold: 0.18
-      });
-
-      workObserver.observe(document.querySelector(".work"));
     }
 
     if (aboutBody && aboutPhoto) {
-      window.gsap.set(aboutBody, {
-        x: -24,
-        opacity: 0
+      setupReplayReveal({
+        trigger: document.querySelector(".about"),
+        targets: [aboutBody, aboutPhoto],
+        from: { opacity: 0 },
+        to: { opacity: 1, duration: 0.9, ease: "power3.out" },
+        threshold: 0.24,
+        extraEnter: () => {
+          window.gsap.fromTo(aboutBody, { x: -24 }, { x: 0, duration: 0.85, ease: "power3.out", overwrite: "auto" });
+          window.gsap.fromTo(aboutPhoto, { x: 24 }, { x: 0, duration: 0.95, ease: "power3.out", overwrite: "auto" });
+        },
+        extraLeave: () => {
+          window.gsap.set(aboutBody, { x: -24 });
+          window.gsap.set(aboutPhoto, { x: 24 });
+        }
       });
-      window.gsap.set(aboutPhoto, {
-        x: 24,
-        opacity: 0
-      });
-
-      const aboutObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const tl = window.gsap.timeline();
-          tl.to(aboutBody, {
-            x: 0,
-            opacity: 1,
-            duration: 0.85,
-            ease: "power3.out"
-          }, 0)
-          .to(aboutPhoto, {
-            x: 0,
-            opacity: 1,
-            duration: 0.95,
-            ease: "power3.out"
-          }, 0.08);
-          observer.disconnect();
-        });
-      }, {
-        threshold: 0.24
-      });
-
-      aboutObserver.observe(document.querySelector(".about"));
     }
 
     if (contactInner) {
-      window.gsap.set(contactInner, {
-        y: 24,
-        opacity: 0
-      });
-
-      const contactObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          window.gsap.to(contactInner, {
-            y: 0,
-            opacity: 1,
-            duration: 0.85,
-            ease: "power3.out"
-          });
-          observer.disconnect();
-        });
-      }, {
+      setupReplayReveal({
+        trigger: document.querySelector(".contact"),
+        targets: [contactInner],
+        from: { y: 24, opacity: 0 },
+        to: { y: 0, opacity: 1, duration: 0.85, ease: "power3.out" },
         threshold: 0.2
       });
-
-      contactObserver.observe(document.querySelector(".contact"));
     }
   } else {
     workCards.forEach((card) => {
