@@ -1,0 +1,735 @@
+{
+  "vaultPath": "/Users/stephi/Documents/Obsidian Vaults/Bible Vault",
+  "generatedAt": "2026-05-11T16:02:52.584Z",
+  "nodes": [
+    {
+      "id": "bible-as-a-source",
+      "title": "Bible as a Source",
+      "file": "05 Sources/Bible as a Source.md",
+      "folder": "05 Sources",
+      "degree": 4.15,
+      "tags": []
+    },
+    {
+      "id": "john-l-schellenberg",
+      "title": "John L. Schellenberg",
+      "file": "05 Sources/John L. Schellenberg.md",
+      "folder": "05 Sources",
+      "degree": 1.15,
+      "tags": []
+    },
+    {
+      "id": "what-happened-after-jesus-death",
+      "title": "What Happened After Jesus’ Death?",
+      "file": "04 Open Loops/What Happened After Jesus’ Death?.md",
+      "folder": "04 Open Loops",
+      "degree": 3,
+      "tags": []
+    },
+    {
+      "id": "doubt",
+      "title": "Doubt",
+      "file": "03 My Thinking/Doubt.md",
+      "folder": "03 My Thinking",
+      "degree": 4.300000000000001,
+      "tags": []
+    },
+    {
+      "id": "epistemic-crisis-anger-at-god-and-rebuilding-reality",
+      "title": "Epistemic Crisis, Anger at God, and Rebuilding Reality",
+      "file": "03 My Thinking/Epistemic Crisis, Anger at God, and Rebuilding Reality.md",
+      "folder": "03 My Thinking",
+      "degree": 2.3,
+      "tags": []
+    },
+    {
+      "id": "my-position-living-document",
+      "title": "My Position (Living Document)",
+      "file": "03 My Thinking/My Position (Living Document).md",
+      "folder": "03 My Thinking",
+      "degree": 4.300000000000001,
+      "tags": []
+    },
+    {
+      "id": "faith-vs-evidence",
+      "title": "Faith vs Evidence",
+      "file": "02 Theology & Concepts/Faith vs Evidence.md",
+      "folder": "02 Theology & Concepts",
+      "degree": 11.900000000000002,
+      "tags": []
+    },
+    {
+      "id": "paul-homosexuality-biblical-authority",
+      "title": "Paul, Homosexuality & Biblical Authority",
+      "file": "02 Theology & Concepts/Paul, Homosexuality & Biblical Authority.md",
+      "folder": "02 Theology & Concepts",
+      "degree": 1.8999999999999995,
+      "tags": []
+    },
+    {
+      "id": "resurrection",
+      "title": "Resurrection",
+      "file": "02 Theology & Concepts/Resurrection.md",
+      "folder": "02 Theology & Concepts",
+      "degree": 10.900000000000002,
+      "tags": []
+    },
+    {
+      "id": "trinity",
+      "title": "Trinity",
+      "file": "02 Theology & Concepts/Trinity.md",
+      "folder": "02 Theology & Concepts",
+      "degree": 3.8999999999999995,
+      "tags": []
+    },
+    {
+      "id": "why-the-bible-contains-letters-not-a-rulebook",
+      "title": "Why the Bible Contains Letters (Not a Rulebook)?",
+      "file": "02 Theology & Concepts/Why the Bible Contains Letters (Not a Rulebook)?.md",
+      "folder": "02 Theology & Concepts",
+      "degree": 0.9,
+      "tags": []
+    },
+    {
+      "id": "women-in-leadership",
+      "title": "Women in Leadership",
+      "file": "02 Theology & Concepts/Women in Leadership.md",
+      "folder": "02 Theology & Concepts",
+      "degree": 6.900000000000002,
+      "tags": []
+    },
+    {
+      "id": "women-silence-equality-in-the-new-testament",
+      "title": "Women, Silence & Equality in the New Testament",
+      "file": "02 Theology & Concepts/Women, Silence & Equality in the New Testament.md",
+      "folder": "02 Theology & Concepts",
+      "degree": 6.900000000000002,
+      "tags": []
+    },
+    {
+      "id": "church-vs-text",
+      "title": "Church vs Text",
+      "file": "01 Text & History/Church vs Text.md",
+      "folder": "01 Text & History",
+      "degree": 4.600000000000001,
+      "tags": []
+    },
+    {
+      "id": "early-church",
+      "title": "Early Church",
+      "file": "01 Text & History/Early Church.md",
+      "folder": "01 Text & History",
+      "degree": 7.600000000000001,
+      "tags": []
+    },
+    {
+      "id": "historical-reliability-of-the-gospels",
+      "title": "Historical Reliability of the Gospels",
+      "file": "01 Text & History/Historical Reliability of the Gospels.md",
+      "folder": "01 Text & History",
+      "degree": 6.600000000000001,
+      "tags": []
+    },
+    {
+      "id": "jesus",
+      "title": "Jesus",
+      "file": "01 Text & History/Jesus.md",
+      "folder": "01 Text & History",
+      "degree": 5.600000000000001,
+      "tags": []
+    },
+    {
+      "id": "paul",
+      "title": "Paul",
+      "file": "01 Text & History/Paul.md",
+      "folder": "01 Text & History",
+      "degree": 4.600000000000001,
+      "tags": []
+    },
+    {
+      "id": "god-is-love",
+      "title": "God is Love?",
+      "file": "00 Core Questions/God is Love?.md",
+      "folder": "00 Core Questions",
+      "degree": 5.15,
+      "tags": [
+        "Theology",
+        "PhilosophyOfReligion",
+        "God",
+        "Love",
+        "Epistemology",
+        "CoreQuestions"
+      ]
+    },
+    {
+      "id": "is-the-bible-trustworthy",
+      "title": "Is the Bible Trustworthy?",
+      "file": "00 Core Questions/Is the Bible Trustworthy?.md",
+      "folder": "00 Core Questions",
+      "degree": 6.15,
+      "tags": []
+    }
+  ],
+  "links": [
+    {
+      "source": "bible-as-a-source",
+      "target": "historical-reliability-of-the-gospels",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "bible-as-a-source",
+      "target": "is-the-bible-trustworthy",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "what-happened-after-jesus-death",
+      "target": "resurrection",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "what-happened-after-jesus-death",
+      "target": "early-church",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "what-happened-after-jesus-death",
+      "target": "faith-vs-evidence",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "doubt",
+      "target": "faith-vs-evidence",
+      "weight": 2,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "doubt",
+      "target": "my-position-living-document",
+      "weight": 1.15,
+      "types": [
+        "wiki",
+        "folder"
+      ]
+    },
+    {
+      "source": "epistemic-crisis-anger-at-god-and-rebuilding-reality",
+      "target": "john-l-schellenberg",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "my-position-living-document",
+      "target": "resurrection",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "my-position-living-document",
+      "target": "jesus",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "faith-vs-evidence",
+      "target": "resurrection",
+      "weight": 2.15,
+      "types": [
+        "wiki",
+        "folder"
+      ]
+    },
+    {
+      "source": "faith-vs-evidence",
+      "target": "is-the-bible-trustworthy",
+      "weight": 2,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "paul-homosexuality-biblical-authority",
+      "target": "paul",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "resurrection",
+      "target": "jesus",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "resurrection",
+      "target": "historical-reliability-of-the-gospels",
+      "weight": 2,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "resurrection",
+      "target": "early-church",
+      "weight": 2,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "trinity",
+      "target": "jesus",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "trinity",
+      "target": "church-vs-text",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "women-in-leadership",
+      "target": "early-church",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "women-in-leadership",
+      "target": "paul",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "women-in-leadership",
+      "target": "church-vs-text",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "women-in-leadership",
+      "target": "bible-as-a-source",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "women-in-leadership",
+      "target": "faith-vs-evidence",
+      "weight": 1.15,
+      "types": [
+        "wiki",
+        "folder"
+      ]
+    },
+    {
+      "source": "women-silence-equality-in-the-new-testament",
+      "target": "early-church",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "women-silence-equality-in-the-new-testament",
+      "target": "paul",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "women-silence-equality-in-the-new-testament",
+      "target": "church-vs-text",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "women-silence-equality-in-the-new-testament",
+      "target": "bible-as-a-source",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "women-silence-equality-in-the-new-testament",
+      "target": "faith-vs-evidence",
+      "weight": 1.15,
+      "types": [
+        "wiki",
+        "folder"
+      ]
+    },
+    {
+      "source": "women-silence-equality-in-the-new-testament",
+      "target": "women-in-leadership",
+      "weight": 1.15,
+      "types": [
+        "wiki",
+        "folder"
+      ]
+    },
+    {
+      "source": "early-church",
+      "target": "paul",
+      "weight": 1.15,
+      "types": [
+        "wiki",
+        "folder"
+      ]
+    },
+    {
+      "source": "early-church",
+      "target": "jesus",
+      "weight": 1.15,
+      "types": [
+        "wiki",
+        "folder"
+      ]
+    },
+    {
+      "source": "historical-reliability-of-the-gospels",
+      "target": "jesus",
+      "weight": 1.15,
+      "types": [
+        "wiki",
+        "folder"
+      ]
+    },
+    {
+      "source": "historical-reliability-of-the-gospels",
+      "target": "faith-vs-evidence",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "god-is-love",
+      "target": "faith-vs-evidence",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "god-is-love",
+      "target": "doubt",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "god-is-love",
+      "target": "epistemic-crisis-anger-at-god-and-rebuilding-reality",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "god-is-love",
+      "target": "my-position-living-document",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "god-is-love",
+      "target": "trinity",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "is-the-bible-trustworthy",
+      "target": "historical-reliability-of-the-gospels",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "is-the-bible-trustworthy",
+      "target": "resurrection",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "is-the-bible-trustworthy",
+      "target": "church-vs-text",
+      "weight": 1,
+      "types": [
+        "wiki"
+      ]
+    },
+    {
+      "source": "bible-as-a-source",
+      "target": "john-l-schellenberg",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "doubt",
+      "target": "epistemic-crisis-anger-at-god-and-rebuilding-reality",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "epistemic-crisis-anger-at-god-and-rebuilding-reality",
+      "target": "my-position-living-document",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "faith-vs-evidence",
+      "target": "paul-homosexuality-biblical-authority",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "faith-vs-evidence",
+      "target": "trinity",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "faith-vs-evidence",
+      "target": "why-the-bible-contains-letters-not-a-rulebook",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "paul-homosexuality-biblical-authority",
+      "target": "resurrection",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "paul-homosexuality-biblical-authority",
+      "target": "trinity",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "paul-homosexuality-biblical-authority",
+      "target": "why-the-bible-contains-letters-not-a-rulebook",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "paul-homosexuality-biblical-authority",
+      "target": "women-in-leadership",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "paul-homosexuality-biblical-authority",
+      "target": "women-silence-equality-in-the-new-testament",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "resurrection",
+      "target": "trinity",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "resurrection",
+      "target": "why-the-bible-contains-letters-not-a-rulebook",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "resurrection",
+      "target": "women-in-leadership",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "resurrection",
+      "target": "women-silence-equality-in-the-new-testament",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "trinity",
+      "target": "why-the-bible-contains-letters-not-a-rulebook",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "trinity",
+      "target": "women-in-leadership",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "trinity",
+      "target": "women-silence-equality-in-the-new-testament",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "why-the-bible-contains-letters-not-a-rulebook",
+      "target": "women-in-leadership",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "why-the-bible-contains-letters-not-a-rulebook",
+      "target": "women-silence-equality-in-the-new-testament",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "church-vs-text",
+      "target": "early-church",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "church-vs-text",
+      "target": "historical-reliability-of-the-gospels",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "church-vs-text",
+      "target": "jesus",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "church-vs-text",
+      "target": "paul",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "early-church",
+      "target": "historical-reliability-of-the-gospels",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "historical-reliability-of-the-gospels",
+      "target": "paul",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "jesus",
+      "target": "paul",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    },
+    {
+      "source": "god-is-love",
+      "target": "is-the-bible-trustworthy",
+      "weight": 0.15,
+      "types": [
+        "folder"
+      ]
+    }
+  ]
+}
