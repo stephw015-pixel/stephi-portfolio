@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brit Morin Socials — Stephanie Wieland</title>
+<title>Brit Morin Social Videos — Stephanie Wieland</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -52,6 +52,27 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .next-title:hover { opacity: 0.6; }
 .btn-primary { background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 100px; text-decoration: none; transition: opacity 0.15s; }
 .btn-primary:hover { opacity: 0.82; }
+.btn-instagram { font-size: clamp(16px, 1.5vw, 20px); padding: 18px 34px; box-shadow: 0 14px 34px rgba(14,14,15,0.12); }
+.instagram-preview { width: min(1120px, calc(100vw - (var(--media-gutter) * 2))); margin: clamp(24px, 4vw, 48px) auto 0; }
+ .instagram-preview img { width: 100%; display: block; border-radius: 18px; }
+.insta-stage { background:#05080d; padding: clamp(36px, 6vw, 84px) var(--media-gutter); }
+.insta-card { width:min(1180px,100%); margin:0 auto; display:block; color:#f7f8fb; text-decoration:none; }
+.insta-top { display:grid; grid-template-columns: 132px minmax(0,1fr); gap:clamp(20px,4vw,48px); align-items:center; max-width:720px; margin:0 auto clamp(32px,5vw,56px); }
+.insta-avatar { width:132px; aspect-ratio:1; border-radius:999px; overflow:hidden; background:linear-gradient(135deg,#ff6a00,#ff2f92,#8d38ff); padding:3px; }
+.insta-avatar img { width:100%; height:100%; object-fit:cover; border-radius:999px; display:block; border:4px solid #05080d; }
+.insta-handle { display:flex; align-items:center; gap:8px; font-size:clamp(28px,4vw,42px); font-weight:900; letter-spacing:-0.04em; line-height:1; }
+.insta-verified { width:22px; height:22px; border-radius:999px; background:#3391ff; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:14px; font-weight:900; }
+.insta-name { margin-top:10px; font-size:17px; font-weight:700; }
+.insta-stats { display:flex; gap:24px; margin-top:18px; flex-wrap:wrap; color:rgba(247,248,251,.88); }
+.insta-stats strong { color:#fff; }
+.insta-bio { margin-top:18px; color:rgba(247,248,251,.88); line-height:1.5; font-size:15px; }
+.insta-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(10px,1.4vw,18px); align-items:start; }
+.insta-tile { background:#10151d; overflow:hidden; border-radius:12px; display:block; box-shadow:0 18px 52px rgba(0,0,0,.28); }
+.insta-tile img { width:100%; height:auto; display:block; object-fit:contain; }
+.insta-cta-row { display:flex; justify-content:center; margin-top:clamp(28px,4vw,44px); }
+.insta-open { background:#fff; color:#05080d; font-size:clamp(17px,1.8vw,22px); font-weight:800; padding:18px 36px; border-radius:999px; box-shadow:0 16px 48px rgba(0,0,0,.32); }
+@media (max-width:768px){ .insta-top{grid-template-columns:1fr;text-align:center;justify-items:center;} .insta-stats{justify-content:center;} .insta-grid{grid-template-columns:repeat(3,minmax(150px,1fr)); overflow-x:auto; padding-bottom:6px;} }
+
 footer { padding: 24px var(--pad); border-top: 1px solid var(--ink-12); display: flex; justify-content: space-between; }
 .footer-l, .footer-r { font-size: 13px; color: var(--ink-30); }
 @media (max-width: 768px) {
@@ -82,7 +103,7 @@ footer { padding: 24px var(--pad); border-top: 1px solid var(--ink-12); display:
 
 <section class="hero">
   <p class="hero-cat">Video Editing · Social Video Direction</p>
-  <h1 class="hero-title">Brit Morin Socials</h1>
+  <h1 class="hero-title">Brit Morin Social Videos</h1>
   <div class="hero-meta">
     <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Video Editor · Visual Direction</span></div>
     <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Brit Morin</span></div>
@@ -91,8 +112,24 @@ footer { padding: 24px var(--pad); border-top: 1px solid var(--ink-12); display:
   </div>
 </section>
 
-<div class="media-full">
-  <img src="assets/brit-morin-socials-cover.png?v=brit-cover-2" alt="Brit Morin social video editing and visual direction work">
+<div class="insta-stage">
+  <a href="https://www.instagram.com/brit/" target="_blank" rel="noopener" class="insta-card" aria-label="Open Brit Morin on Instagram">
+    <div class="insta-top">
+      <div class="insta-avatar"><img src="assets/brit-morin-profile-pic.png" alt="Brit Morin profile"></div>
+      <div>
+        <div class="insta-handle">brit <span class="insta-verified">✓</span></div>
+        <div class="insta-name">Brit Morin</div>
+        <div class="insta-stats"><span><strong>Social</strong> videos</span><span><strong>63.3K</strong> followers</span><span><strong>@brit</strong></span></div>
+        <div class="insta-bio">Investing in world changing founders<br>VC @OfflineVentures · Founder @BritandCo · Co-Host @MoreOrLess</div>
+      </div>
+    </div>
+    <div class="insta-grid" aria-label="Selected Brit Morin social videos">
+      <div class="insta-tile"><img src="assets/brit-video-robotics.jpg" alt="Brit Morin social video cover: This is real robotics"></div>
+      <div class="insta-tile"><img src="assets/brit-video-agents.jpg" alt="Brit Morin social video cover: Agents are taking over"></div>
+      <div class="insta-tile"><img src="assets/brit-video-best-product.jpg" alt="Brit Morin social video cover: The best product doesn't always win"></div>
+    </div>
+    <div class="insta-cta-row"><span class="insta-open">Open on Instagram →</span></div>
+  </a>
 </div>
 
 <div class="content">
@@ -127,29 +164,9 @@ footer { padding: 24px var(--pad); border-top: 1px solid var(--ink-12); display:
   </div>
 
   <div class="content-grid">
-    <span class="content-label">Work samples</span>
-    <div class="content-body">
-      <p>A sample social edit and visual direction board showing the pace, cover system, AI-assisted workflow, CC, and graphic style used across the content.</p>
-    </div>
-  </div>
-
-  <div class="media-grid" style="grid-template-columns:minmax(260px, 420px) minmax(0, 1fr);align-items:start;">
-    <div class="media-item" style="aspect-ratio:auto;">
-      <img src="assets/brit-morin-socials-ai-agent.gif" alt="Brit Morin AI agent social video edit sample" style="width:100%;display:block;height:auto;">
-    </div>
-    <div class="media-item" style="aspect-ratio:auto;">
-      <img src="assets/brit-morin-socials-board.png" alt="Brit Morin social video visual direction board" style="width:100%;display:block;height:auto;">
-    </div>
-  </div>
-
-  <div class="content-grid">
     <span class="content-label">Live work</span>
     <div class="content-body">
       <p>Selected work appears on Brit Morin's Instagram, alongside her broader founder, VC, and future-of-tech content.</p>
-      <p><a class="btn-primary" href="https://www.instagram.com/brit/" target="_blank" rel="noopener">View on Instagram →</a></p>
-      <a href="https://www.instagram.com/brit/" target="_blank" rel="noopener" class="media-item" style="display:block;margin-top:24px;aspect-ratio:auto;text-decoration:none;color:inherit;">
-        <img src="assets/brit-morin-instagram-profile.png" alt="Brit Morin Instagram profile showing social video work" style="width:100%;display:block;height:auto;">
-      </a>
     </div>
   </div>
 
