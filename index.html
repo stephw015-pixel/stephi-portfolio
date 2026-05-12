@@ -225,8 +225,8 @@ nav {
   z-index: 7;
   width: min(720px, 100%);
   opacity: 0;
-  transform: translateY(30px);
-  transition: transform 1.2s ease-out 0.2s, opacity 1.2s ease-out 0.2s;
+  transform: translateY(8px);
+  transition: transform 0.55s ease-out 0.04s, opacity 0.55s ease-out 0.04s;
   margin-inline: auto;
   text-align: center;
   padding-top: clamp(24px, 4vh, 48px);
@@ -240,7 +240,7 @@ nav {
   line-height: var(--hero-line);
   letter-spacing: var(--display-tracking);
   color: #f7f6f2;
-  margin-bottom: 14px;
+  margin: 0 auto 14px;
   text-wrap: balance;
   max-width: 13ch;
   text-shadow: 0 12px 36px rgba(16, 12, 36, 0.34);
@@ -476,6 +476,11 @@ nav {
   padding: clamp(48px, 6vw, 80px) clamp(32px, 5vw, 72px);
 }
 
+.work .capabilities {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .cap-title {
   font-size: clamp(28px, 4vw, 52px);
   font-weight: var(--display-weight);
@@ -589,6 +594,11 @@ nav {
 
 .activity {
   padding: 0 var(--pad) clamp(40px, 6vw, 72px);
+}
+
+.work .activity {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .activity-header {
@@ -911,6 +921,38 @@ footer {
     transition: none !important;
   }
 }
+
+
+/* Obsidian Galaxy hero integration */
+.hero {
+  background: #fffdf8;
+}
+
+.hero-layer,
+.hero-moon {
+  display: none;
+}
+
+.hero-galaxy-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.hero-title {
+  color: #0e0e0f;
+  text-shadow: none;
+}
+
+.hero-copy {
+  color: rgba(14, 14, 15, 0.64);
+  text-shadow: none;
+}
+
 </style>
 </head>
 <body>
@@ -935,6 +977,7 @@ footer {
     <img class="hero-layer hero-cloud-a" src="assets/cloud.png" alt="">
     <img class="hero-layer hero-cloud-b" src="assets/cloud2.png" alt="">
     <img class="hero-moon" src="assets/moon.png" alt="">
+    <canvas class="hero-galaxy-canvas" aria-hidden="true"></canvas>
   </div>
   <div class="hero-content">
     <h1 class="hero-title">Design, motion<br>and a bit of <span class="grad-word">magic</span>.</h1>
@@ -1011,6 +1054,128 @@ footer {
     </a>
   </div>
 
+  <section class="capabilities">
+    <h2 class="cap-title">What I do</h2>
+    <div class="cap-grid">
+      <div class="cap-item">
+        <div class="cap-icon">
+          <img src="assets/1.png" alt="Creative direction illustration">
+        </div>
+        <h3 class="cap-item-title">Creative direction</h3>
+        <p class="cap-item-body">From concept to campaign. I shape visual identity, direct creative output, and help brands figure out what they actually want to say, and how to say it well.</p>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-icon">
+          <img src="assets/2.png" alt="Motion and video illustration">
+        </div>
+        <h3 class="cap-item-title">Motion, design &amp; video</h3>
+        <p class="cap-item-body">Motion design, illustration, UI, and video editing. After Effects, Rive, Figma. Making things move and feel considered across every screen and format.</p>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-icon">
+          <img src="assets/3.png" alt="Building digital products illustration">
+        </div>
+        <h3 class="cap-item-title">Building digital products</h3>
+        <p class="cap-item-body">I design and build my own tools and apps from scratch. A designer's eye and a builder's mindset, from first idea to live product.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="activity" aria-labelledby="activity-title">
+    <div class="activity-header">
+      <h2 id="activity-title" class="activity-title">Activity</h2>
+      <a class="activity-link" href="https://www.linkedin.com/in/stephawieland/recent-activity/all/" target="_blank" rel="noopener">See all on LinkedIn →</a>
+    </div>
+
+    <div class="activity-strip">
+      <a class="activity-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7459612900798853120/" target="_blank" rel="noopener">
+        <div class="activity-card-head">
+          <div class="activity-avatar">
+            <img src="assets/selfie.jpg" alt="Stephanie Wieland">
+          </div>
+          <div class="activity-meta">
+            <div class="activity-name">Stephanie Wieland</div>
+            <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
+            <div class="activity-time">New</div>
+          </div>
+          <div class="activity-dots">···</div>
+        </div>
+        <p class="activity-copy">An object of quiet light. A small motion study exploring warmth, material, and the softness of an everyday glow...</p>
+        <div class="activity-media">
+          <img src="assets/linkedin-quiet-light.gif" alt="Quiet light object motion study">
+        </div>
+        <div class="activity-foot">
+          <span>Open LinkedIn →</span>
+        </div>
+      </a>
+
+      <a class="activity-card" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
+        <div class="activity-card-head">
+          <div class="activity-avatar">
+            <img src="assets/selfie.jpg" alt="Stephanie Wieland">
+          </div>
+          <div class="activity-meta">
+            <div class="activity-name">Stephanie Wieland</div>
+            <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
+            <div class="activity-time">3h</div>
+          </div>
+          <div class="activity-dots">···</div>
+        </div>
+        <p class="activity-copy">So, I turned my fox illustration into a 3D model using <span class="activity-link-text">MeshyAI</span>... and now I can’t stop thinking about it!...</p>
+        <div class="activity-media">
+          <img src="assets/linkedin-fox-cover.gif" alt="Fox illustration turned into 3D model">
+        </div>
+        <div class="activity-foot">
+          <span>Open LinkedIn →</span>
+        </div>
+      </a>
+
+      <a class="activity-card" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
+        <div class="activity-card-head">
+          <div class="activity-avatar">
+            <img src="assets/selfie.jpg" alt="Stephanie Wieland">
+          </div>
+          <div class="activity-meta">
+            <div class="activity-name">Stephanie Wieland</div>
+            <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
+            <div class="activity-time">3w · Edited</div>
+          </div>
+          <div class="activity-dots">···</div>
+        </div>
+        <p class="activity-copy">Recently, I built a small mood based palette generator. You can describe a scene or feeling, generate color combinations and save...</p>
+        <div class="activity-media">
+          <img src="assets/linkedin-palette-cover.gif" alt="Mood palette generator post cover">
+        </div>
+        <div class="activity-foot">
+          <span>Open LinkedIn →</span>
+        </div>
+      </a>
+
+      <a class="activity-card" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
+        <div class="activity-card-head">
+          <div class="activity-avatar">
+            <img src="assets/selfie.jpg" alt="Stephanie Wieland">
+          </div>
+          <div class="activity-meta">
+            <div class="activity-name">Stephanie Wieland</div>
+            <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
+            <div class="activity-time">2mo</div>
+          </div>
+          <div class="activity-dots">···</div>
+        </div>
+        <p class="activity-copy">It was a pleasure joining the Bad Accent podcast. Thank you <span class="activity-link-text">João Rodrigues</span> and <span class="activity-link-text">Sofia Salinas Vieira</span> for such a thoughtful conversation...</p>
+        <div class="activity-media">
+          <img src="assets/linkedin-bad-accent-cover.png" alt="Bad Accent podcast post cover">
+        </div>
+        <div class="activity-foot">
+          <span>Open LinkedIn →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
   <div class="track-header">
     <span class="track-name">Built work</span>
     <span class="track-rule"></span>
@@ -1044,35 +1209,6 @@ footer {
   </div>
 </section>
 
-<section class="capabilities">
-  <h2 class="cap-title">What I do</h2>
-  <div class="cap-grid">
-    <div class="cap-item">
-      <div class="cap-icon">
-        <img src="assets/1.png" alt="Creative direction illustration">
-      </div>
-      <h3 class="cap-item-title">Creative direction</h3>
-      <p class="cap-item-body">From concept to campaign. I shape visual identity, direct creative output, and help brands figure out what they actually want to say, and how to say it well.</p>
-    </div>
-
-    <div class="cap-item">
-      <div class="cap-icon">
-        <img src="assets/2.png" alt="Motion and video illustration">
-      </div>
-      <h3 class="cap-item-title">Motion, design &amp; video</h3>
-      <p class="cap-item-body">Motion design, illustration, UI, and video editing. After Effects, Rive, Figma. Making things move and feel considered across every screen and format.</p>
-    </div>
-
-    <div class="cap-item">
-      <div class="cap-icon">
-        <img src="assets/3.png" alt="Building digital products illustration">
-      </div>
-      <h3 class="cap-item-title">Building digital products</h3>
-      <p class="cap-item-body">I design and build my own tools and apps from scratch. A designer's eye and a builder's mindset, from first idea to live product.</p>
-    </div>
-  </div>
-</section>
-
 <section id="about" class="about">
   <div class="about-track-header">
     <span class="track-name">About</span>
@@ -1093,99 +1229,6 @@ footer {
         <img src="assets/selfie.jpg" alt="Stephanie Wieland">
       </div>
     </div>
-  </div>
-</section>
-
-<section class="activity" aria-labelledby="activity-title">
-  <div class="activity-header">
-    <h2 id="activity-title" class="activity-title">Activity</h2>
-    <a class="activity-link" href="https://www.linkedin.com/in/stephawieland/recent-activity/all/" target="_blank" rel="noopener">See all on LinkedIn →</a>
-  </div>
-
-  <div class="activity-strip">
-    <a class="activity-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7459612900798853120/" target="_blank" rel="noopener">
-      <div class="activity-card-head">
-        <div class="activity-avatar">
-          <img src="assets/selfie.jpg" alt="Stephanie Wieland">
-        </div>
-        <div class="activity-meta">
-          <div class="activity-name">Stephanie Wieland</div>
-          <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
-          <div class="activity-time">New</div>
-        </div>
-        <div class="activity-dots">···</div>
-      </div>
-      <p class="activity-copy">An object of quiet light. A small motion study exploring warmth, material, and the softness of an everyday glow...</p>
-      <div class="activity-media">
-        <img src="assets/linkedin-quiet-light.gif" alt="Quiet light object motion study">
-      </div>
-      <div class="activity-foot">
-        <span>Open LinkedIn →</span>
-      </div>
-    </a>
-
-    <a class="activity-card" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
-      <div class="activity-card-head">
-        <div class="activity-avatar">
-          <img src="assets/selfie.jpg" alt="Stephanie Wieland">
-        </div>
-        <div class="activity-meta">
-          <div class="activity-name">Stephanie Wieland</div>
-          <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
-          <div class="activity-time">3h</div>
-        </div>
-        <div class="activity-dots">···</div>
-      </div>
-      <p class="activity-copy">So, I turned my fox illustration into a 3D model using <span class="activity-link-text">MeshyAI</span>... and now I can’t stop thinking about it!...</p>
-      <div class="activity-media">
-        <img src="assets/linkedin-fox-cover.gif" alt="Fox illustration turned into 3D model">
-      </div>
-      <div class="activity-foot">
-        <span>Open LinkedIn →</span>
-      </div>
-    </a>
-
-    <a class="activity-card" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
-      <div class="activity-card-head">
-        <div class="activity-avatar">
-          <img src="assets/selfie.jpg" alt="Stephanie Wieland">
-        </div>
-        <div class="activity-meta">
-          <div class="activity-name">Stephanie Wieland</div>
-          <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
-          <div class="activity-time">3w · Edited</div>
-        </div>
-        <div class="activity-dots">···</div>
-      </div>
-      <p class="activity-copy">Recently, I built a small mood based palette generator. You can describe a scene or feeling, generate color combinations and save...</p>
-      <div class="activity-media">
-        <img src="assets/linkedin-palette-cover.gif" alt="Mood palette generator post cover">
-      </div>
-      <div class="activity-foot">
-        <span>Open LinkedIn →</span>
-      </div>
-    </a>
-
-    <a class="activity-card" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
-      <div class="activity-card-head">
-        <div class="activity-avatar">
-          <img src="assets/selfie.jpg" alt="Stephanie Wieland">
-        </div>
-        <div class="activity-meta">
-          <div class="activity-name">Stephanie Wieland</div>
-          <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
-          <div class="activity-time">2mo</div>
-        </div>
-        <div class="activity-dots">···</div>
-      </div>
-      <p class="activity-copy">It was a pleasure joining the Bad Accent podcast. Thank you <span class="activity-link-text">João Rodrigues</span> and <span class="activity-link-text">Sofia Salinas Vieira</span> for such a thoughtful conversation...</p>
-      <div class="activity-media">
-        <img src="assets/linkedin-bad-accent-cover.png" alt="Bad Accent podcast post cover">
-      </div>
-      <div class="activity-foot">
-        <span>Open LinkedIn →</span>
-      </div>
-    </a>
   </div>
 </section>
 
@@ -1231,6 +1274,7 @@ footer {
 
 <div id="tweaks-root"></div>
 
+<script type="module" src="assets/obsidian-galaxy-header.js?v=color-stars"></script>
 <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
 <script>
   const track = document.getElementById("trackClient");
@@ -1337,7 +1381,7 @@ footer {
         transformOrigin: "center center"
       });
       window.gsap.set(heroContent, {
-        y: 18,
+        y: 8,
         opacity: 0
       });
 
@@ -1384,9 +1428,9 @@ footer {
         .to(heroContent, {
           y: 0,
           opacity: 1,
-          duration: 0.7,
+          duration: 0.42,
           ease: "power3.out"
-        }, 0.02)
+        }, 0)
         .add(() => {
           if (!idleStarted) {
             idleStarted = true;
