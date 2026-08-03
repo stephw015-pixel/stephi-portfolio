@@ -470,10 +470,8 @@ nav {
 }
 
 .capabilities {
-  margin: 0 var(--pad) clamp(48px, 7vw, 96px);
-  background: var(--surface);
-  border-radius: 24px;
-  padding: clamp(48px, 6vw, 80px) clamp(32px, 5vw, 72px);
+  margin: 0 0 clamp(56px, 8vw, 112px);
+  padding: clamp(40px, 6vw, 84px) 0 clamp(36px, 5vw, 72px);
 }
 
 .work .capabilities {
@@ -482,51 +480,60 @@ nav {
 }
 
 .cap-title {
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: var(--display-weight);
-  font-family: var(--display);
-  font-style: var(--display-style);
-  letter-spacing: var(--display-tracking);
-  color: var(--ink);
-  text-align: center;
-  margin-bottom: clamp(40px, 6vw, 72px);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 800;
+  color: var(--ink-50);
+  margin-bottom: clamp(28px, 4vw, 52px);
 }
 
 .cap-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(24px, 4vw, 56px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 5vw, 68px);
 }
 
 .cap-item {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: clamp(14px, 2vw, 20px);
+  padding-top: 0;
   will-change: transform, opacity;
 }
 
-.cap-icon {
-  width: 176px;
-  height: 176px;
-  margin: 0 auto 24px;
+.cap-item::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 22px;
+  margin-bottom: clamp(14px, 2vw, 24px);
+  background: var(--cap-line);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 24 C82 10 155 14 230 13 C306 12 380 5 456 9 C510 12 554 15 596 13' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M0 30 C74 16 150 24 226 20 C306 14 370 18 452 17 C512 17 558 20 600 22' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' opacity='.9'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 24 C82 10 155 14 230 13 C306 12 380 5 456 9 C510 12 554 15 596 13' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M0 30 C74 16 150 24 226 20 C306 14 370 18 452 17 C512 17 558 20 600 22' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' opacity='.9'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
-.cap-icon img {
-  width: 176px;
-  height: 176px;
-  object-fit: contain;
-  display: block;
-}
+.cap-item:nth-child(1) { --cap-line: #3155ff; }
+.cap-item:nth-child(2) { --cap-line: #c81717; }
+.cap-item:nth-child(3) { --cap-line: #ff5a1f; }
 
 .cap-item-title {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: clamp(26px, 3.1vw, 40px);
+  font-weight: 800;
+  line-height: 1.05;
   color: var(--ink);
-  margin-bottom: 8px;
+  max-width: 12ch;
 }
 
 .cap-item-body {
-  font-size: 14px;
-  color: var(--ink-50);
-  line-height: 1.65;
+  font-size: clamp(22px, 2.6vw, 38px);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.08;
+  max-width: 12.5ch;
 }
 
 .about {
@@ -855,7 +862,6 @@ footer {
 }
 
 @media (max-width: 1024px) {
-  .cap-grid { grid-template-columns: 1fr 1fr; }
   .about-inner { grid-template-columns: 1fr; gap: 32px; }
   .about-photo { max-width: 420px; }
   .track-header { flex-wrap: wrap; row-gap: 10px; }
@@ -886,15 +892,6 @@ footer {
   .hero-title { font-size: clamp(32px, 9vw, 54px); max-width: 13ch; }
   .hero-copy { font-size: 15px; max-width: 26rem; }
   .hero-bottom { align-items: stretch; }
-  .cap-icon {
-    width: 132px;
-    height: 132px;
-    margin-bottom: 20px;
-  }
-  .cap-icon img {
-    width: 132px;
-    height: 132px;
-  }
   .activity-header {
     flex-direction: column;
     align-items: flex-start;
@@ -902,7 +899,10 @@ footer {
   .track-header { gap: 12px; }
   .track-name { white-space: normal; }
   .proj-card { flex-basis: min(82vw, 320px); }
-  .cap-grid { grid-template-columns: 1fr; }
+  .cap-grid { grid-template-columns: 1fr; gap: 38px; }
+  .cap-item::before { width: min(100%, 280px); margin-bottom: 14px; }
+  .cap-item-title, .cap-item-body { max-width: 100%; }
+  .cap-item-body { font-size: clamp(20px, 6vw, 25px); line-height: 1.12; }
   .built-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .contact-title { white-space: normal; font-size: clamp(28px, 8vw, 44px); }
@@ -923,6 +923,608 @@ footer {
 }
 
 
+/* Reference-inspired full homepage redesign */
+body {
+  background: #f1f1f1;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 28px 10px;
+  background: rgba(241, 241, 241, 0.82);
+  border-bottom: 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-photo {
+  width: 98px;
+  height: 42px;
+  display: block;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.nav-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 34%;
+  display: block;
+}
+
+.nav-right {
+  gap: clamp(18px, 2.4vw, 34px);
+}
+
+.nav-right a {
+  padding: 0;
+  border-radius: 0;
+  font-size: clamp(22px, 2vw, 31px);
+  line-height: 1;
+  font-weight: 800;
+  color: #050505;
+}
+
+.nav-right a:hover { background: transparent; opacity: .58; }
+.nav-divider, .nav-cta { display: none !important; }
+
+.scribble-rule {
+  position: sticky;
+  top: 68px;
+  z-index: 99;
+  height: 13px;
+  margin: 0 28px;
+  background: #151515;
+  clip-path: polygon(0 46%, 4% 35%, 7% 56%, 12% 44%, 18% 50%, 27% 40%, 36% 47%, 44% 38%, 52% 55%, 62% 43%, 71% 49%, 82% 35%, 90% 60%, 96% 39%, 100% 50%, 100% 66%, 96% 58%, 89% 71%, 81% 54%, 71% 62%, 62% 55%, 52% 68%, 44% 55%, 35% 64%, 27% 52%, 18% 61%, 12% 54%, 7% 68%, 4% 51%, 0 62%);
+}
+
+.hero-redesign {
+  min-height: clamp(560px, 72vh, 700px);
+  align-items: center;
+  justify-content: center;
+  padding: clamp(66px, 8vh, 104px) 28px clamp(36px, 5vh, 64px);
+  background: #f1f1f1;
+}
+
+.hero-redesign::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background: rgba(241, 241, 241, 0.18);
+}
+
+.hero-galaxy-canvas {
+  opacity: .42;
+  mix-blend-mode: multiply;
+}
+
+.hero-redesign-content {
+  width: min(980px, 100%);
+  max-width: 980px;
+  padding-top: 0;
+  color: #050505;
+  opacity: 1;
+  transform: none;
+  text-align: center;
+  font-family: var(--sans);
+}
+
+.brand-hero-title {
+  margin: 0 0 clamp(26px, 3.4vh, 44px);
+  color: #050505;
+  font-family: var(--sans);
+  font-size: clamp(52px, 6.65vw, 104px);
+  font-weight: 650;
+  line-height: .9;
+  letter-spacing: -.045em;
+  word-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.hero-pillars {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 2.4vw, 48px);
+  margin-bottom: clamp(56px, 7vh, 84px);
+  flex-wrap: wrap;
+}
+
+.pillar-word {
+  position: relative;
+  display: inline-block;
+  color: #050505;
+  font-size: clamp(42px, 5.25vw, 104px);
+  font-weight: 620;
+  line-height: .9;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+  padding: 0 .04em .18em;
+}
+
+.pillar-word::after {
+  content: "";
+  position: absolute;
+  left: .03em;
+  right: .02em;
+  bottom: .02em;
+  height: .12em;
+  background: var(--underline-color);
+  clip-path: polygon(0 52%, 8% 40%, 17% 55%, 27% 47%, 38% 60%, 50% 45%, 62% 55%, 74% 43%, 86% 57%, 100% 48%, 100% 74%, 86% 66%, 74% 76%, 62% 67%, 50% 78%, 38% 68%, 27% 76%, 17% 66%, 8% 74%, 0 66%);
+  transform: rotate(var(--underline-tilt));
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.pillar-word::before {
+  display: none;
+}
+
+.pillar-blue { --underline-color: #3155ff; --underline-tilt: -.7deg; }
+.pillar-red { --underline-color: #c81717; --underline-tilt: .55deg; }
+.pillar-orange { --underline-color: #ff5a1f; --underline-tilt: -.45deg; }
+
+.hero-redesign-copy {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #050505;
+  font-family: var(--sans);
+  font-size: clamp(21px, 1.65vw, 29px);
+  line-height: 1.18;
+  font-weight: 400;
+  text-shadow: none;
+}
+
+.scroll-cue {
+  display: inline-block;
+  margin-top: 8px;
+  color: rgba(5, 5, 5, .34);
+  font-size: clamp(22px, 1.9vw, 34px);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.work-redesign {
+  padding: 24px 28px clamp(80px, 9vw, 140px);
+}
+
+.section-kicker {
+  color: rgba(5, 5, 5, .52);
+  font-size: clamp(24px, 2vw, 32px);
+  font-weight: 650;
+  margin: 0 0 24px;
+}
+
+.work-grid-redesign {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 40px;
+  row-gap: clamp(96px, 10vw, 168px);
+}
+
+.work-tile,
+.work-tile.built {
+  position: relative;
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  flex: none;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  color: #050505;
+  box-shadow: none;
+}
+
+.work-tile:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.work-number {
+  display: none;
+}
+
+.work-image {
+  width: 100%;
+  aspect-ratio: 2.05 / 1;
+  border-radius: 0;
+  background: #111;
+}
+
+.tile-3 .work-image,
+.tile-4 .work-image {
+  aspect-ratio: 1.85 / .94;
+}
+
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: none;
+}
+
+.work-image-top img { object-position: center top; }
+
+.work-tile:hover .work-image img { transform: none; }
+
+.work-caption {
+  justify-self: end;
+  margin: 4px 0 0;
+  color: #050505;
+  font-size: clamp(24px, 2.2vw, 34px);
+  font-weight: 560;
+  line-height: 1;
+  letter-spacing: -.04em;
+  text-align: right;
+}
+
+.work-type {
+  justify-self: end;
+  margin: 4px 0 0;
+  color: rgba(5,5,5,.42);
+  font-size: clamp(14px, 1.2vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: right;
+}
+
+.principles-redesign {
+  padding: clamp(70px, 8vw, 130px) 28px;
+  margin: 0;
+}
+
+.principles-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(36px, 5vw, 86px);
+}
+
+.principle-item .cap-item-title {
+  font-size: clamp(34px, 3.5vw, 64px);
+  max-width: none;
+}
+
+.principle-item .cap-item-body {
+  font-size: clamp(24px, 2.2vw, 36px);
+  max-width: 18ch;
+  text-wrap: balance;
+}
+
+.principle-item::before {
+  width: min(100%, 340px);
+  height: 20px;
+  justify-self: start;
+  margin-left: 0;
+  background: var(--cap-line);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 44' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 24 C78 12 150 15 225 14 C306 13 383 7 458 10 C514 13 558 16 600 14' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M0 29 C75 18 148 24 226 20 C307 15 370 19 452 18 C512 18 558 20 600 23' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' opacity='.9'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 44' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 24 C78 12 150 15 225 14 C306 13 383 7 458 10 C514 13 558 16 600 14' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M0 29 C75 18 148 24 226 20 C307 15 370 19 452 18 C512 18 558 20 600 23' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' opacity='.9'/%3E%3C/svg%3E");
+}
+
+.about-redesign {
+  padding: clamp(72px, 9vw, 140px) 28px;
+  border-top: 0;
+}
+
+.about-redesign-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 38px);
+  align-items: start;
+  max-width: 980px;
+  margin: 0 auto;
+  font-family: var(--sans);
+}
+
+.about-lede {
+  color: #050505;
+  max-width: 980px;
+  font-family: var(--sans);
+  font-size: clamp(24px, 2.2vw, 36px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.about-redesign .about-body {
+  color: #050505;
+  font-family: var(--sans);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  max-width: 980px;
+  font-size: clamp(24px, 2.2vw, 36px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.elsewhere-redesign {
+  padding: clamp(46px, 6vw, 88px) 28px clamp(70px, 8vw, 120px);
+}
+
+.elsewhere-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.elsewhere-tile {
+  display: grid;
+  grid-template-rows: auto min-content min-content;
+  gap: 8px;
+  min-width: 0;
+  color: #050505;
+  text-decoration: none;
+}
+
+.elsewhere-image {
+  aspect-ratio: 1.35 / 1;
+  overflow: hidden;
+  background: #dedede;
+}
+
+.elsewhere-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .35s ease;
+}
+
+.elsewhere-tile:hover .elsewhere-image img {
+  transform: scale(1.025);
+}
+
+.elsewhere-label {
+  margin-top: 4px;
+  color: rgba(5, 5, 5, .58);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.elsewhere-title {
+  color: #050505;
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 560;
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+
+.contact-redesign {
+  min-height: 0;
+  padding: clamp(70px, 8vw, 130px) 28px;
+  align-items: start;
+  border-top: 0;
+}
+
+.contact-title {
+  color: #050505;
+  font-size: clamp(48px, 8vw, 132px);
+  font-weight: 650;
+  line-height: .9;
+  letter-spacing: -.045em;
+  margin-bottom: clamp(28px, 5vw, 64px);
+}
+
+.contact-form {
+  max-width: 980px;
+}
+
+.contact-field {
+  --frame-color: #3155ff;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.contact-grid .contact-field:nth-child(2) {
+  --frame-color: #c81717;
+}
+
+.contact-form > .contact-field {
+  --frame-color: #ff5a1f;
+}
+
+.contact-field::before,
+.contact-field::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  right: -5px;
+  top: 20px;
+  bottom: -6px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.contact-field::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 190' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 26 C116 13 230 22 326 18 C428 14 526 20 612 16 C605 58 616 99 609 171 C495 176 388 164 299 171 C184 180 94 169 9 173 C15 121 5 73 8 26' fill='none' stroke='%233155ff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 32 C97 20 190 25 296 22 C414 18 520 15 617 28 C609 78 616 116 612 165 C516 160 404 171 304 169 C201 167 97 176 4 164 C11 108 0 72 3 32' fill='none' stroke='%233155ff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' opacity='.65'/%3E%3C/svg%3E");
+}
+
+.contact-grid .contact-field:nth-child(2)::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 190' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 26 C116 13 230 22 326 18 C428 14 526 20 612 16 C605 58 616 99 609 171 C495 176 388 164 299 171 C184 180 94 169 9 173 C15 121 5 73 8 26' fill='none' stroke='%23c81717' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 32 C97 20 190 25 296 22 C414 18 520 15 617 28 C609 78 616 116 612 165 C516 160 404 171 304 169 C201 167 97 176 4 164 C11 108 0 72 3 32' fill='none' stroke='%23c81717' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' opacity='.65'/%3E%3C/svg%3E");
+}
+
+.contact-form > .contact-field::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 190' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 26 C116 13 230 22 326 18 C428 14 526 20 612 16 C605 58 616 99 609 171 C495 176 388 164 299 171 C184 180 94 169 9 173 C15 121 5 73 8 26' fill='none' stroke='%23ff5a1f' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 32 C97 20 190 25 296 22 C414 18 520 15 617 28 C609 78 616 116 612 165 C516 160 404 171 304 169 C201 167 97 176 4 164 C11 108 0 72 3 32' fill='none' stroke='%23ff5a1f' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' opacity='.65'/%3E%3C/svg%3E");
+}
+
+.contact-field::after {
+  display: none;
+}
+
+.contact-grid .contact-field:first-child::after {
+  transform: rotate(-.18deg);
+}
+
+.contact-form > .contact-field::after {
+  transform: rotate(-.12deg);
+}
+
+.contact-input,
+.contact-textarea {
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+  padding: 20px 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-textarea {
+  padding-top: 28px;
+}
+
+.contact-field::before {
+  left: -3px;
+  right: -3px;
+  top: 22px;
+  bottom: -4px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 190' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 28 C116 18 228 24 326 20 C428 17 526 21 614 18 C609 60 615 100 610 166 C496 171 388 163 300 169 C184 176 94 168 7 170 C12 120 4 74 6 28' fill='none' stroke='%233155ff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 33 C98 23 190 27 296 24 C414 21 520 18 618 29 C612 78 614 114 612 162 C516 158 404 168 304 166 C201 164 96 172 3 162 C9 108 0 73 2 33' fill='none' stroke='%233155ff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='.72'/%3E%3C/svg%3E");
+}
+
+.contact-grid .contact-field:nth-child(2)::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 190' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 28 C116 18 228 24 326 20 C428 17 526 21 614 18 C609 60 615 100 610 166 C496 171 388 163 300 169 C184 176 94 168 7 170 C12 120 4 74 6 28' fill='none' stroke='%23c81717' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 33 C98 23 190 27 296 24 C414 21 520 18 618 29 C612 78 614 114 612 162 C516 158 404 168 304 166 C201 164 96 172 3 162 C9 108 0 73 2 33' fill='none' stroke='%23c81717' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='.72'/%3E%3C/svg%3E");
+}
+
+.contact-form > .contact-field::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 190' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 28 C116 18 228 24 326 20 C428 17 526 21 614 18 C609 60 615 100 610 166 C496 171 388 163 300 169 C184 176 94 168 7 170 C12 120 4 74 6 28' fill='none' stroke='%23ff5a1f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 33 C98 23 190 27 296 24 C414 21 520 18 618 29 C612 78 614 114 612 162 C516 158 404 168 304 166 C201 164 96 172 3 162 C9 108 0 73 2 33' fill='none' stroke='%23ff5a1f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='.72'/%3E%3C/svg%3E");
+}
+
+.contact-label {
+  color: #050505;
+  font-size: 13px;
+}
+
+.principle-item::before {
+  width: clamp(210px, 70%, 330px);
+  height: 13px;
+  align-self: start;
+  justify-self: start;
+  margin: 0 0 12px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 30' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 17 C82 11 151 13 226 12 C311 11 381 8 456 9 C513 10 558 12 599 11' fill='none' stroke='black' stroke-width='1.55' stroke-linecap='round'/%3E%3Cpath d='M0 21 C76 16 150 18 225 17 C307 14 371 17 452 16 C513 16 556 18 600 19' fill='none' stroke='black' stroke-width='1' stroke-linecap='round' opacity='.82'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 30' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 17 C82 11 151 13 226 12 C311 11 381 8 456 9 C513 10 558 12 599 11' fill='none' stroke='black' stroke-width='1.55' stroke-linecap='round'/%3E%3Cpath d='M0 21 C76 16 150 18 225 17 C307 14 371 17 452 16 C513 16 556 18 600 19' fill='none' stroke='black' stroke-width='1' stroke-linecap='round' opacity='.82'/%3E%3C/svg%3E");
+}
+
+.contact-field::before,
+.contact-grid .contact-field:nth-child(2)::before,
+.contact-form > .contact-field::before {
+  left: 0;
+  right: 0;
+  top: 22px;
+  bottom: -2px;
+}
+
+.contact-field::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 190' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 11 C112 5 226 9 326 7 C429 5 528 8 619 6 C614 54 620 101 616 184 C501 188 389 181 299 185 C184 190 92 184 1 186 C6 122 0 66 1 11' fill='none' stroke='%233155ff' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0 17 C98 10 190 12 296 11 C413 8 521 6 620 16 C615 76 618 121 617 180 C516 177 405 185 304 183 C200 181 95 187 0 179 C5 110 0 73 0 17' fill='none' stroke='%233155ff' stroke-width='.8' stroke-linecap='round' stroke-linejoin='round' opacity='.66'/%3E%3C/svg%3E");
+}
+
+.contact-grid .contact-field:nth-child(2)::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 190' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 11 C112 5 226 9 326 7 C429 5 528 8 619 6 C614 54 620 101 616 184 C501 188 389 181 299 185 C184 190 92 184 1 186 C6 122 0 66 1 11' fill='none' stroke='%23c81717' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0 17 C98 10 190 12 296 11 C413 8 521 6 620 16 C615 76 618 121 617 180 C516 177 405 185 304 183 C200 181 95 187 0 179 C5 110 0 73 0 17' fill='none' stroke='%23c81717' stroke-width='.8' stroke-linecap='round' stroke-linejoin='round' opacity='.66'/%3E%3C/svg%3E");
+}
+
+.contact-form > .contact-field::before {
+  top: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 620 190' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 11 C112 5 226 9 326 7 C429 5 528 8 619 6 C614 54 620 101 616 184 C501 188 389 181 299 185 C184 190 92 184 1 186 C6 122 0 66 1 11' fill='none' stroke='%23ff5a1f' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M0 17 C98 10 190 12 296 11 C413 8 521 6 620 16 C615 76 618 121 617 180 C516 177 405 185 304 183 C200 181 95 187 0 179 C5 110 0 73 0 17' fill='none' stroke='%23ff5a1f' stroke-width='.8' stroke-linecap='round' stroke-linejoin='round' opacity='.66'/%3E%3C/svg%3E");
+}
+
+.contact-submit {
+  border-radius: 0;
+  background: #050505;
+  color: #fff;
+}
+
+footer {
+  border-top: 0;
+  padding: clamp(28px, 3vw, 42px) 28px;
+  align-items: baseline;
+}
+
+.footer-l,
+.footer-r {
+  color: #050505;
+  font-size: clamp(17px, 1.45vw, 25px);
+  line-height: 1.02;
+  max-width: 650px;
+}
+
+.footer-l {
+  color: rgba(5, 5, 5, .58);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  max-width: 560px;
+}
+
+.footer-r {
+  color: rgba(5, 5, 5, .8);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+@media (max-width: 980px) {
+  .brand-hero-title { font-size: clamp(58px, 15vw, 132px); }
+  .hero-pillars { flex-direction: column; gap: 28px; margin-bottom: 56px; }
+  .pillar-word { font-size: clamp(56px, 14vw, 110px); }
+  .work-grid-redesign { grid-template-columns: 1fr; row-gap: 72px; }
+  .elsewhere-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .principles-grid { grid-template-columns: 1fr; }
+  .principle-item .cap-item-body { max-width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .topbar { padding: 14px 20px 8px; align-items: center; }
+  .nav-photo { width: 76px; height: 34px; }
+  .nav-right { gap: 16px; }
+  .nav-right a { display: inline-block !important; font-size: 18px; }
+  .scribble-rule { margin: 0 20px; top: 56px; }
+  .hero-redesign { min-height: 520px; padding: 64px 20px 34px; }
+  .brand-hero-title { margin-bottom: 24px; font-size: clamp(46px, 15vw, 72px); }
+  .pillar-word {
+    font-size: clamp(42px, 12.2vw, 54px);
+    padding-left: .06em;
+    padding-right: .06em;
+  }
+  .hero-redesign-copy { font-size: 20px; }
+  .scroll-cue { font-size: 21px; }
+  .work-redesign, .principles-redesign, .about-redesign, .elsewhere-redesign, .contact-redesign { padding-left: 20px; padding-right: 20px; }
+  .work-number { font-size: 54px; }
+  .work-caption { font-size: 25px; }
+  .work-type { font-size: 15px; }
+  .elsewhere-grid { grid-template-columns: 1fr; gap: 26px; }
+  .elsewhere-image { aspect-ratio: 1.6 / 1; }
+  .work-image, .tile-3 .work-image, .tile-4 .work-image { aspect-ratio: 1.45 / 1; }
+  .about-lede,
+  .about-redesign .about-body { font-size: clamp(24px, 6vw, 34px); }
+  .contact-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; align-items: flex-start; gap: 26px; padding-left: 20px; padding-right: 20px; }
+}
+
 /* Obsidian Galaxy hero integration */
 .hero {
   background: #fffdf8;
@@ -936,39 +1538,33 @@ footer {
 .hero-galaxy-canvas {
   position: absolute;
   inset: 0;
-  z-index: 6;
+  z-index: 5;
   width: 100%;
   height: 100%;
   display: block;
+  opacity: .88;
+  mix-blend-mode: multiply;
+  filter: saturate(1.45) contrast(1.2);
   pointer-events: none;
-}
-
-.hero-title {
-  color: #0e0e0f;
-  text-shadow: none;
-}
-
-.hero-copy {
-  color: rgba(14, 14, 15, 0.64);
-  text-shadow: none;
 }
 
 </style>
 </head>
 <body>
 
-<nav>
-  <span class="nav-left">Creative Director &amp; Designer</span>
+<nav class="topbar">
+  <a class="nav-photo" href="#top" aria-label="Stephanie Wieland home">
+    <img src="assets/selfie.jpg" alt="Stephanie Wieland">
+  </a>
   <div class="nav-right">
-    <a href="#work">Work</a>
     <a href="#about">About</a>
-    <div class="nav-divider"></div>
+    <a href="#work">Work</a>
     <a href="#contact">Contact</a>
-    <a href="#contact" class="nav-cta">Get in touch</a>
   </div>
 </nav>
+<div class="scribble-rule" aria-hidden="true"></div>
 
-<section class="hero">
+<section id="top" class="hero hero-redesign">
   <div class="hero-scene" aria-hidden="true">
     <img class="hero-layer hero-bg" src="assets/bg.png" alt="">
     <img class="hero-layer hero-stars-a" src="assets/stars.png" alt="">
@@ -979,315 +1575,159 @@ footer {
     <img class="hero-moon" src="assets/moon.png" alt="">
     <canvas class="hero-galaxy-canvas" aria-hidden="true"></canvas>
   </div>
-  <div class="hero-content">
-    <h1 class="hero-title">Design, motion<br>and a bit of <span class="grad-word">magic</span>.</h1>
-    <p class="hero-copy">I shape visual worlds, motion systems, and AI-aware creative experiences for brands.</p>
+  <div class="hero-content hero-redesign-content">
+    <h1 class="brand-hero-title">Stephanie Wieland</h1>
+    <p class="hero-copy hero-redesign-copy">Creative director, motion designer and illustrator shaping visual worlds, social stories, and digital experiences with feeling.</p>
   </div>
 </section>
 
-<section id="work" class="work">
-  <div class="track-header">
-    <span class="track-name">Client work</span>
-    <span class="track-rule"></span>
-    <span class="track-count">6 projects</span>
-  </div>
-
-  <div class="scroll-track" id="trackClient">
-    <a href="tree-of-faith.html" class="proj-card">
-      <div class="proj-thumb">
+<section id="work" class="work work-redesign" aria-labelledby="work-title">
+  <h2 id="work-title" class="section-kicker">Selected work</h2>
+  <div class="work-grid-redesign">
+    <a href="tree-of-faith.html" class="proj-card work-tile tile-1">
+      <span class="work-number">#1</span>
+      <div class="proj-thumb work-image work-image-top">
         <img src="assets/1fa33169-bd80-4746-b497-8305d34fecd0_rw_1920.png" alt="Tree of Faith" loading="lazy">
       </div>
-      <div class="proj-body">
-        <p class="proj-cat">UI Animation, Glorify App</p>
-        <h3 class="proj-title">Tree of Faith</h3>
-        <p class="proj-desc">Bringing a spiritual app's core metaphor to life through interface animation.</p>
-        <span class="proj-link">View project →</span>
-      </div>
+      <h3 class="proj-title work-caption">Tree of Faith</h3>
+      <p class="proj-cat work-type">UI animation for Glorify</p>
     </a>
 
-    <a href="glorify-christmas.html" class="proj-card">
-      <div class="proj-thumb">
+    <a href="glorify-christmas.html" class="proj-card work-tile tile-2">
+      <span class="work-number">#2</span>
+      <div class="proj-thumb work-image">
         <img src="assets/c51d10ae-dd5a-4fab-966e-60d135df935c_rw_1920.png" alt="Glorify Christmas Campaign" loading="lazy">
       </div>
-      <div class="proj-body">
-        <p class="proj-cat">Campaign, Seasonal</p>
-        <h3 class="proj-title">Glorify Christmas Campaign</h3>
-        <p class="proj-desc">Full seasonal campaign across illustration, motion, and social.</p>
-        <span class="proj-link">View project →</span>
-      </div>
+      <h3 class="proj-title work-caption">Glorify Christmas Campaign</h3>
+      <p class="proj-cat work-type">Campaign, illustration &amp; motion</p>
     </a>
 
-    <a href="glorify-trailer.html" class="proj-card">
-      <div class="proj-thumb">
+    <a href="glorify-trailer.html" class="proj-card work-tile tile-3">
+      <span class="work-number">#3</span>
+      <div class="proj-thumb work-image">
         <img src="assets/1f2ba66b-9a2a-4deb-b03c-9f206779a7e7_rw_1920-1.png" alt="Who is Jesus Trailer" loading="lazy">
       </div>
-      <div class="proj-body">
-        <p class="proj-cat">Motion Design, App</p>
-        <h3 class="proj-title">Glorify: Who is Jesus Trailer</h3>
-        <p class="proj-desc">Cinematic motion for a flagship feature, built to make people feel something.</p>
-        <span class="proj-link">View project →</span>
-      </div>
+      <h3 class="proj-title work-caption">Who is Jesus Trailer</h3>
+      <p class="proj-cat work-type">Motion graphics &amp; moving image</p>
     </a>
 
-    <a href="brit-morin-socials.html" class="proj-card">
-      <div class="proj-thumb">
-        <img src="assets/brit-morin-socials-cover.png?v=brit-cover-2" alt="Brit Morin social video editing cover" loading="lazy">
+    <a href="brit-morin-socials.html" class="proj-card work-tile tile-4">
+      <span class="work-number">#4</span>
+      <div class="proj-thumb work-image">
+        <img src="assets/brit-morin-socials-cover.png?v=brit-cover-2" alt="Brit Morin Social Videos" loading="lazy">
       </div>
-      <div class="proj-body">
-        <p class="proj-cat">Video Editing, Social Video Direction</p>
-        <h3 class="proj-title">Brit Morin Socials</h3>
-        <p class="proj-desc">Video editing and visual direction for Brit Morin's Instagram, shaping polished short-form content with pace and clarity.</p>
-        <span class="proj-link">View project →</span>
-      </div>
+      <h3 class="proj-title work-caption">Brit Morin Social Videos</h3>
+      <p class="proj-cat work-type">Video editing &amp; social direction</p>
     </a>
 
-    <a href="google-maps.html" class="proj-card">
-      <div class="proj-thumb">
+    <a href="google-maps.html" class="proj-card work-tile tile-5">
+      <span class="work-number">#5</span>
+      <div class="proj-thumb work-image">
         <img src="assets/google-maps-cover.png" alt="Google Maps Sensory Feature" loading="lazy">
       </div>
-      <div class="proj-body">
-        <p class="proj-cat">UI/UX, Concept</p>
-        <h3 class="proj-title">Google Maps: Sensory-Friendly</h3>
-        <p class="proj-desc">A proposed accessibility redesign for neurodivergent users.</p>
-        <span class="proj-link">View project →</span>
-      </div>
+      <h3 class="proj-title work-caption">Google Maps: Sensory-Friendly</h3>
+      <p class="proj-cat work-type">UI/UX accessibility concept</p>
     </a>
 
-    <a href="illustration.html" class="proj-card">
-      <div class="proj-thumb">
+    <a href="illustration.html" class="proj-card work-tile tile-6">
+      <span class="work-number">#6</span>
+      <div class="proj-thumb work-image">
         <img src="assets/df07d84b-2c75-4f5b-b77d-1f64beb88725_rw_1920.jpg" alt="Illustration Work" loading="lazy">
       </div>
-      <div class="proj-body">
-        <p class="proj-cat">Illustration, Editorial &amp; Publishing</p>
-        <h3 class="proj-title">Illustration Work</h3>
-        <p class="proj-desc">Editorial, brand, and children's book illustration, including Where The Lights Are.</p>
-        <span class="proj-link">View project →</span>
-      </div>
-    </a>
-  </div>
-
-  <section class="capabilities">
-    <h2 class="cap-title">What I do</h2>
-    <div class="cap-grid">
-      <div class="cap-item">
-        <div class="cap-icon">
-          <img src="assets/1.png" alt="Creative direction illustration">
-        </div>
-        <h3 class="cap-item-title">Creative direction</h3>
-        <p class="cap-item-body">From concept to campaign. I shape visual identity, direct creative output, and help brands figure out what they actually want to say, and how to say it well.</p>
-      </div>
-
-      <div class="cap-item">
-        <div class="cap-icon">
-          <img src="assets/2.png" alt="Motion and video illustration">
-        </div>
-        <h3 class="cap-item-title">Motion, design &amp; video</h3>
-        <p class="cap-item-body">Motion design, illustration, UI, and video editing. After Effects, Rive, Figma. Making things move and feel considered across every screen and format.</p>
-      </div>
-
-      <div class="cap-item">
-        <div class="cap-icon">
-          <img src="assets/3.png" alt="Building digital products illustration">
-        </div>
-        <h3 class="cap-item-title">Building digital products</h3>
-        <p class="cap-item-body">I design and build my own tools and apps from scratch. A designer's eye and a builder's mindset, from first idea to live product.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="activity" aria-labelledby="activity-title">
-    <div class="activity-header">
-      <h2 id="activity-title" class="activity-title">Activity</h2>
-      <a class="activity-link" href="https://www.linkedin.com/in/stephawieland/recent-activity/all/" target="_blank" rel="noopener">See all on LinkedIn →</a>
-    </div>
-
-    <div class="activity-strip">
-      <a class="activity-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7459612900798853120/" target="_blank" rel="noopener">
-        <div class="activity-card-head">
-          <div class="activity-avatar">
-            <img src="assets/selfie.jpg" alt="Stephanie Wieland">
-          </div>
-          <div class="activity-meta">
-            <div class="activity-name">Stephanie Wieland</div>
-            <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
-            <div class="activity-time">New</div>
-          </div>
-          <div class="activity-dots">···</div>
-        </div>
-        <p class="activity-copy">An object of quiet light. A small motion study exploring warmth, material, and the softness of an everyday glow...</p>
-        <div class="activity-media">
-          <img src="assets/linkedin-quiet-light.gif" alt="Quiet light object motion study">
-        </div>
-        <div class="activity-foot">
-          <span>Open LinkedIn →</span>
-        </div>
-      </a>
-
-      <a class="activity-card" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
-        <div class="activity-card-head">
-          <div class="activity-avatar">
-            <img src="assets/selfie.jpg" alt="Stephanie Wieland">
-          </div>
-          <div class="activity-meta">
-            <div class="activity-name">Stephanie Wieland</div>
-            <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
-            <div class="activity-time">3h</div>
-          </div>
-          <div class="activity-dots">···</div>
-        </div>
-        <p class="activity-copy">So, I turned my fox illustration into a 3D model using <span class="activity-link-text">MeshyAI</span>... and now I can’t stop thinking about it!...</p>
-        <div class="activity-media">
-          <img src="assets/linkedin-fox-cover.gif" alt="Fox illustration turned into 3D model">
-        </div>
-        <div class="activity-foot">
-          <span>Open LinkedIn →</span>
-        </div>
-      </a>
-
-      <a class="activity-card" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
-        <div class="activity-card-head">
-          <div class="activity-avatar">
-            <img src="assets/selfie.jpg" alt="Stephanie Wieland">
-          </div>
-          <div class="activity-meta">
-            <div class="activity-name">Stephanie Wieland</div>
-            <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
-            <div class="activity-time">3w · Edited</div>
-          </div>
-          <div class="activity-dots">···</div>
-        </div>
-        <p class="activity-copy">Recently, I built a small mood based palette generator. You can describe a scene or feeling, generate color combinations and save...</p>
-        <div class="activity-media">
-          <img src="assets/linkedin-palette-cover.gif" alt="Mood palette generator post cover">
-        </div>
-        <div class="activity-foot">
-          <span>Open LinkedIn →</span>
-        </div>
-      </a>
-
-      <a class="activity-card" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
-        <div class="activity-card-head">
-          <div class="activity-avatar">
-            <img src="assets/selfie.jpg" alt="Stephanie Wieland">
-          </div>
-          <div class="activity-meta">
-            <div class="activity-name">Stephanie Wieland</div>
-            <div class="activity-role">Freelance Motion Animator, UI &amp; Illustration</div>
-            <div class="activity-time">2mo</div>
-          </div>
-          <div class="activity-dots">···</div>
-        </div>
-        <p class="activity-copy">It was a pleasure joining the Bad Accent podcast. Thank you <span class="activity-link-text">João Rodrigues</span> and <span class="activity-link-text">Sofia Salinas Vieira</span> for such a thoughtful conversation...</p>
-        <div class="activity-media">
-          <img src="assets/linkedin-bad-accent-cover.png" alt="Bad Accent podcast post cover">
-        </div>
-        <div class="activity-foot">
-          <span>Open LinkedIn →</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <div class="track-header">
-    <span class="track-name">Built work</span>
-    <span class="track-rule"></span>
-    <span class="track-count">2 projects</span>
-  </div>
-
-  <div class="built-grid">
-    <a href="https://stephw015-pixel.github.io/Cycle-Synch/" target="_blank" rel="noopener" class="proj-card built">
-      <div class="proj-thumb">
-        <img src="assets/cycle_synch_v3.png" alt="Moon Cycle Sync" loading="lazy">
-      </div>
-      <div class="proj-body">
-        <p class="proj-cat">Product, Design &amp; Build</p>
-        <h3 class="proj-title">Moon Cycle Sync</h3>
-        <p class="proj-desc">A cycle-tracking app designed and built from scratch. Grounded in biology, warm in tone.</p>
-        <span class="proj-link">View live →</span>
-      </div>
-    </a>
-
-    <a href="https://stephw015-pixel.github.io/jar-of-stars/" target="_blank" rel="noopener" class="proj-card built">
-      <div class="proj-thumb">
-        <img src="assets/jar_of_stars_v2.png" alt="A Jar Full of Stars" loading="lazy">
-      </div>
-      <div class="proj-body">
-        <p class="proj-cat">Interactive, Personal project</p>
-        <h3 class="proj-title">A Jar Full of Stars</h3>
-        <p class="proj-desc">30 affirmations hidden inside pixel-art stars that fly out of an 8-bit glass jar. Built with care, coded with curiosity.</p>
-        <span class="proj-link">View live →</span>
-      </div>
+      <h3 class="proj-title work-caption">Illustration Work</h3>
+      <p class="proj-cat work-type">Editorial, brand &amp; publishing</p>
     </a>
   </div>
 </section>
 
-<section id="about" class="about">
-  <div class="about-track-header">
-    <span class="track-name">About</span>
-    <span class="track-rule"></span>
+<section class="capabilities principles-redesign" aria-labelledby="principles-title">
+  <h2 id="principles-title" class="section-kicker">What I do</h2>
+  <div class="cap-grid principles-grid">
+    <div class="cap-item principle-item">
+      <h3 class="cap-item-title">1 Storytelling.</h3>
+      <p class="cap-item-body">Shaping clear narratives with strong visual direction and a human thread.</p>
+    </div>
+    <div class="cap-item principle-item">
+      <h3 class="cap-item-title">2 Care.</h3>
+      <p class="cap-item-body">Working with intention, empathy, and respect for the people each project serves.</p>
+    </div>
+    <div class="cap-item principle-item">
+      <h3 class="cap-item-title">3 Motion.</h3>
+      <p class="cap-item-body">Using rhythm, pacing, and movement to make ideas clear, memorable, and alive.</p>
+    </div>
   </div>
+</section>
 
-  <div class="about-inner">
+<section id="about" class="about about-redesign">
+  <h2 class="section-kicker">About</h2>
+  <div class="about-redesign-grid">
+    <p class="about-lede">I’m Stephanie, a London-based creative director, motion designer and illustrator. I build visual systems, campaign worlds and motion-led stories for brands, apps and digital products.</p>
     <div class="about-body">
-      <p>I'm Stephanie, motion designer, illustrator, and creative director based in London. I've spent years building visual systems for apps, brands, and campaigns that actually make people feel something.</p>
-      <p>Growing up across five countries gave me something you can't learn in a classroom: the ability to read a room, adapt, and find what connects. That shows up in the work.</p>
-      <p>Alongside client work I've started building my own things. Digital products designed and coded from the ground up. I'm curious about where creativity and technology meet, and I like working at that edge.</p>
-      <p>When I'm not designing I'm probably in a coffee shop, deep in a book, or convinced that one more iteration will make it perfect.</p>
-      <p class="about-meta">London · International</p>
-    </div>
-
-    <div class="about-photo-wrap">
-      <div class="about-photo">
-        <img src="assets/selfie.jpg" alt="Stephanie Wieland">
-      </div>
+      <p>Growing up across five countries shaped how I work: I notice tone, context and what helps people connect. That shows up in the care behind the visuals, the pacing, and the story.</p>
+      <p>Alongside client work, I’m building my own tools and experiments where creativity, AI and interaction meet.</p>
     </div>
   </div>
 </section>
 
-<section id="contact" class="contact">
-  <div>
-    <h2 class="contact-title"><span class="grad-word">Got a project?<br>Let's talk.</span></h2>
-    <form
-      action="https://formspree.io/f/mrejbkjw"
-      method="POST"
-      class="contact-form"
-    >
-      <p class="sr-only">
-        <label>Don't fill this out if you're human: <input name="_gotcha" tabindex="-1" autocomplete="off"></label>
-      </p>
-      <input type="hidden" name="_subject" value="New portfolio enquiry">
-
-      <div class="contact-grid">
-        <label class="contact-field">
-          <span class="contact-label">Name</span>
-          <input class="contact-input" type="text" name="name" autocomplete="name" required>
-        </label>
-
-        <label class="contact-field">
-          <span class="contact-label">Email</span>
-          <input class="contact-input" type="email" name="email" autocomplete="email" required>
-        </label>
+<section class="elsewhere-redesign" aria-labelledby="elsewhere-title">
+  <h2 id="elsewhere-title" class="section-kicker">Other things I’m building</h2>
+  <div class="elsewhere-grid">
+    <a class="elsewhere-tile" href="https://stephw015-pixel.github.io/Cycle-Synch/" target="_blank" rel="noopener">
+      <div class="elsewhere-image">
+        <img src="assets/cycle_synch_v3.png" alt="Moon Cycle Sync app preview" loading="lazy">
       </div>
+      <span class="elsewhere-label">Built</span>
+      <h3 class="elsewhere-title">Moon Cycle Sync</h3>
+    </a>
 
-      <label class="contact-field">
-        <span class="contact-label">Message</span>
-        <textarea class="contact-textarea" name="message" placeholder="Tell me a little about your project..." required></textarea>
-      </label>
+    <a class="elsewhere-tile" href="https://stephw015-pixel.github.io/jar-of-stars/" target="_blank" rel="noopener">
+      <div class="elsewhere-image">
+        <img src="assets/jar_of_stars_v2.png" alt="A Jar Full of Stars preview" loading="lazy">
+      </div>
+      <span class="elsewhere-label">Built</span>
+      <h3 class="elsewhere-title">A Jar Full of Stars</h3>
+    </a>
 
+    <a class="elsewhere-tile" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
+      <div class="elsewhere-image">
+        <img src="assets/linkedin-fox-cover.gif" alt="Fox illustration turned into a 3D model" loading="lazy">
+      </div>
+      <span class="elsewhere-label">Activity</span>
+      <h3 class="elsewhere-title">Fox Illustration to 3D</h3>
+    </a>
+
+    <a class="elsewhere-tile" href="https://www.linkedin.com/in/stephawieland/" target="_blank" rel="noopener">
+      <div class="elsewhere-image">
+        <img src="assets/linkedin-palette-cover.gif" alt="Mood based palette generator preview" loading="lazy">
+      </div>
+      <span class="elsewhere-label">Experiment</span>
+      <h3 class="elsewhere-title">Mood Palette Generator</h3>
+    </a>
+  </div>
+</section>
+
+<section id="contact" class="contact contact-redesign">
+  <div>
+    <h2 class="contact-title">Got a project?<br>Let’s talk.</h2>
+    <form action="https://formspree.io/f/mrejbkjw" method="POST" class="contact-form">
+      <p class="sr-only"><label>Don't fill this out if you're human: <input name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
+      <input type="hidden" name="_subject" value="New portfolio enquiry">
+      <div class="contact-grid">
+        <label class="contact-field"><span class="contact-label">Name</span><input class="contact-input" type="text" name="name" autocomplete="name" required></label>
+        <label class="contact-field"><span class="contact-label">Email</span><input class="contact-input" type="email" name="email" autocomplete="email" required></label>
+      </div>
+      <label class="contact-field"><span class="contact-label">Message</span><textarea class="contact-textarea" name="message" placeholder="Tell me a little about your project..." required></textarea></label>
       <button type="submit" class="btn-primary contact-submit">Send message</button>
     </form>
   </div>
 </section>
 
 <footer>
-  <span class="footer-l">© 2026 Stephanie Wieland. All rights reserved.</span>
-  <span class="footer-r">London, UK</span>
+  <span class="footer-l">Please reach out if you want to see deeper portfolio work or talk through a project.</span>
+  <span class="footer-r">© 2026 Stephanie Wieland</span>
 </footer>
 
-<div id="tweaks-root"></div>
-
 <script type="module" src="assets/obsidian-galaxy-header.js?v=color-stars"></script>
-<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
 <script>
   const track = document.getElementById("trackClient");
   let dragging = false;
@@ -1295,7 +1735,8 @@ footer {
   let scrollLeft = 0;
   let moved = false;
 
-  track.addEventListener("mousedown", (e) => {
+  if (track) {
+    track.addEventListener("mousedown", (e) => {
     dragging = true;
     moved = false;
     startX = e.pageX - track.offsetLeft;
@@ -1323,6 +1764,7 @@ footer {
       moved = false;
     }
   }, true);
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", (e) => {
@@ -1583,10 +2025,10 @@ footer {
     setupScrollDownReveal({
       trigger: document.querySelector(".capabilities"),
       targets: capabilityItems,
-      from: { y: 42, opacity: 0 },
-      to: { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
-      threshold: 0.28,
-      stagger: 0.22
+      from: { y: 18, opacity: 0 },
+      to: { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" },
+      threshold: 0.18,
+      stagger: 0.06
     });
   }
 
