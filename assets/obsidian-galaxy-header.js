@@ -18,7 +18,7 @@ if (canvas && hero) {
   renderer.setClearColor(0x000000, 0);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, isCoarsePointer ? 1.35 : 1.8));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.28;
+  renderer.toneMappingExposure = 1.48;
 
   const camera = new THREE.PerspectiveCamera(58, 1, 0.1, 900);
   camera.position.set(-3, 2.5, 31);
@@ -97,7 +97,7 @@ if (canvas && hero) {
   starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
 
   const starMaterial = new THREE.PointsMaterial({
-    size: isCoarsePointer ? 3.05 : 3.95,
+    size: isCoarsePointer ? 3.25 : 4.25,
     sizeAttenuation: true,
     map: dotTexture,
     vertexColors: true,
@@ -130,10 +130,10 @@ if (canvas && hero) {
   bgGeometry.setAttribute('position', new THREE.BufferAttribute(bgPositions, 3));
   bgGeometry.setAttribute('color', new THREE.BufferAttribute(bgColors, 3));
   const bgStars = new THREE.Points(bgGeometry, new THREE.PointsMaterial({
-    size: isCoarsePointer ? 0.72 : 0.9,
+    size: isCoarsePointer ? 0.78 : 1.0,
     vertexColors: true,
     transparent: true,
-    opacity: 0.56,
+    opacity: 0.7,
     blending: THREE.AdditiveBlending,
     depthWrite: false,
     fog: false,
@@ -143,7 +143,7 @@ if (canvas && hero) {
 
   const linkVertices = [];
   const linkColors = [];
-  graph.links.slice(0, isCoarsePointer ? 90 : 160).forEach((link, index) => {
+  graph.links.slice(0, isCoarsePointer ? 70 : 118).forEach((link, index) => {
     const source = nodeById.get(link.source);
     const target = nodeById.get(link.target);
     if (!source || !target) return;
@@ -159,7 +159,8 @@ if (canvas && hero) {
   const links = new THREE.LineSegments(linkGeometry, new THREE.LineBasicMaterial({
     vertexColors: true,
     transparent: true,
-    opacity: 0.62,
+    opacity: 0.58,
+    linewidth: 1.8,
     fog: false,
     blending: THREE.NormalBlending
   }));
@@ -182,7 +183,7 @@ if (canvas && hero) {
     const elapsed = clock.getElapsedTime();
     const motion = prefersReducedMotion ? 0.12 : 1;
 
-    starMaterial.size = (isCoarsePointer ? 3.05 : 3.95) + Math.sin(elapsed * 2.65) * 0.22 * motion;
+    starMaterial.size = (isCoarsePointer ? 3.25 : 4.25) + Math.sin(elapsed * 2.65) * 0.22 * motion;
     galaxyGroup.position.x = galaxyBasePosition.x + Math.sin(elapsed * 0.72) * 2.8 * motion;
     galaxyGroup.position.y = galaxyBasePosition.y + Math.cos(elapsed * 0.58) * 1.45 * motion;
     galaxyGroup.position.z = galaxyBasePosition.z + Math.sin(elapsed * 0.46) * 1.2 * motion;

@@ -4,6 +4,52 @@ body {
   color: #050505;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor video,
+  body.has-custom-cursor .media-full img,
+  body.has-custom-cursor .media-item img,
+  body.has-custom-cursor .illustration-item img,
+  body.has-custom-cursor .book-item img {
+    cursor: none !important;
+  }
+
+  .site-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #050505;
+    background: #050505;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: width 0.16s ease, height 0.16s ease, border-color 0.16s ease, background 0.16s ease, opacity 0.16s ease;
+  }
+
+  .site-cursor.is-visible { opacity: 1; }
+
+  .site-cursor.is-hovering {
+    width: 28px;
+    height: 28px;
+    border-color: #ff4f00;
+    background: #ff4f00;
+  }
+
+  .site-cursor.is-pressing {
+    width: 22px;
+    height: 22px;
+    background: #ff4f00;
+  }
+}
+
 nav {
   position: sticky;
   top: 0;
@@ -46,6 +92,18 @@ nav::after {
   background: #050505;
   color: #fff;
   font-weight: 560;
+  transition: background .16s ease, color .16s ease, opacity .16s ease;
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible,
+.nav-cta:active,
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn-primary:active {
+  background: #ff4f00;
+  color: #050505;
+  opacity: 1;
 }
 
 .hero {
