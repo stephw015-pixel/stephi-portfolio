@@ -7,8 +7,191 @@
     <title>Stephi Portfolio</title>
     <script type="module" crossorigin src="/assets/index-DyCQrpe_.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CUFsaUBw.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
+  <nav class="mobile-corner-links" aria-label="Studio pages mobile" style="position:fixed;z-index:3000;top:28px;right:16px;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:var(--font-sans);line-height:1;"><a href="/contact" style="color:#1f4fff;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;">Contact</a><a href="/about" style="color:#1f4fff;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;">About</a></nav>
     <div id="root"></div>
-  </body>
+  <script>
+(function(){
+  function showOnView(target){
+    if(target.dataset.revealed==="true"||!("IntersectionObserver" in window)){
+      target.classList.add("is-visible");
+      target.dataset.revealed="true";
+      return;
+    }
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          target.classList.add("is-visible");
+          target.dataset.revealed="true";
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.1,rootMargin:"0px 0px -8% 0px"});
+    observer.observe(target);
+  }
+  function enhanceBand(){
+    if(document.querySelector(".open-work-band")){return}
+    var band=document.createElement("aside");
+    band.className="open-work-band";
+    var bandTextByPath={
+      "/":"LET’S BUILD THE THING",
+      "/tree-of-faith":"TREE OF FAITH",
+      "/christmas":"GLORIFY CHRISTMAS",
+      "/who-is-jesus":"WHO IS JESUS",
+      "/kimzii":"KIMZII",
+      "/google-maps":"GOOGLE MAPS SENSORY",
+      "/social-video":"SOCIAL VIDEO DIRECTION",
+      "/illustration":"ILLUSTRATION"
+    };
+    var currentPath=window.location.pathname.replace(/\/$/,"")||"/";
+    var bandText=bandTextByPath[currentPath]||"OPEN TO WORK";
+    band.setAttribute("aria-label",bandText);
+    var track=document.createElement("div");
+    track.className="open-work-band__track";
+    for(var i=0;i<18;i+=1){
+      var span=document.createElement("span");
+      span.textContent=bandText;
+      track.appendChild(span);
+    }
+    band.appendChild(track);
+    document.body.appendChild(band);
+  }
+  function enhanceGlobalHeader(){
+    if(document.querySelector(".sadti-global-header")){return}
+    var header=document.createElement("header");
+    header.className="sadti-global-header";
+    header.setAttribute("aria-label","Site index");
+    header.innerHTML =
+      '<div class="sadti-brand"><a href="/" class="sadti-logo">stephwieland.xyz</a><p>creative direction<br>motion systems<br>visual ideas.</p></div>'+
+      '<nav class="sadti-list-header" aria-label="Portfolio index">'+
+        '<div><small>DIRECTION</small><a href="/tree-of-faith">TREE OF FAITH</a><a href="/christmas">GLORIFY CHRISTMAS</a><a href="/who-is-jesus">WHO IS JESUS</a><a href="/social-video">SOCIAL VIDEO</a></div>'+
+        '<div><small>BRAND / PRODUCT</small><a href="/kimzii">KIMZII</a><a href="/google-maps">GOOGLE MAPS</a><a href="/illustration">ILLUSTRATION</a></div>'+
+      '</nav>'+
+      '<nav class="sadti-corner-nav" aria-label="Studio pages"><a href="/about">About</a><a href="/contact">Contact</a></nav>'+
+      '<a class="sadti-portrait-link" href="/about" aria-label="About Stephanie Wieland"><img src="/assets/about-01.png" alt=""></a>';
+    document.body.prepend(header);
+    enhanceGlobalFooter();
+  }
+  function enhanceGlobalFooter(){
+    if(document.querySelector(".sadti-global-footer")){return}
+    var footer=document.createElement("footer");
+    footer.className="sadti-global-footer";
+    footer.innerHTML =
+      '<p class="sadti-global-footer__credit"><strong>Stephanie Wieland</strong><br>©2026</p>'+
+      '<p class="sadti-global-footer__message"><span>Please reach out if you want to see deeper portfolio work</span><span>or talk through a project.</span></p>'+
+      '<a class="sadti-global-footer__top" href="#top">Back to top</a>';
+    document.body.appendChild(footer);
+  }
+  function homeCard(href,img,title,meta,copy){
+    return '<a class="sadti-project-card" href="'+href+'"><img src="'+img+'" alt=""><span class="sadti-card__meta">'+meta+'</span><strong>'+title+'</strong><em>'+copy+'</em></a>';
+  }
+  function enhanceSadtiHome(){
+    var page=document.querySelector(".home-page");
+    if(!page||page.querySelector(".sadti-home")){return}
+    var shell=document.createElement("section");
+    shell.className="sadti-home";
+    shell.setAttribute("aria-label","Stephanie Wieland portfolio overview");
+    shell.innerHTML =
+
+      '<div class="sadti-copy"><p>Creative director shaping launches, stories and systems.</p><p>Motion, brand, product thinking and AI workflows.</p></div>'+
+      '<div class="sadti-work">'+
+        homeCard('/tree-of-faith','/assets/main-01.png','Tree of Faith','PRODUCT DESIGN / MOTION DESIGN / ILLUSTRATION','Growth loop for daily reflection')+
+        homeCard('/christmas','/assets/main-02.png','Glorify Christmas','ART DIRECTION / CAMPAIGN DESIGN','Seasonal world across app and social')+
+        homeCard('/who-is-jesus','/assets/main-03.png','Who is Jesus','MOTION DIRECTION / VISUAL STORYTELLING','Visual language for a big question')+
+        homeCard('/kimzii','/assets/main-04.png','Kimzii','BRAND DESIGN / ART DIRECTION','A fermented food identity with personality')+
+        homeCard('/social-video','/assets/main-05.png','Social Video Direction','CREATIVE DIRECTION / MOTION DESIGN / AI','Fast social systems for Brit Morin')+
+        homeCard('/google-maps','/assets/main-06.png','Google Maps Sensory','UX DESIGN / ACCESSIBILITY','A calmer way to navigate public space')+
+        homeCard('/illustration','/assets/main-07.jpg','Illustration','ILLUSTRATION / IMAGE MAKING','Character, editorial and publishing work')+
+      '</div>'+
+      '<footer class="home-footer sadti-footer"><p class="home-footer__credit"><strong>Stephanie Wieland</strong><br>©2026</p><p class="footer-message"><span class="footer-message__line">Please reach out if you want to see deeper portfolio work</span><span class="footer-message__line">or talk through a project.</span></p><a class="home-footer__top" href="#top">Back to top</a><span class="home-footer__rule" aria-hidden="true"></span></footer>';
+    page.prepend(shell);
+    shell.querySelectorAll(".sadti-project-card,.sadti-copy").forEach(showOnView);
+  }
+  function placeGlobalFooter(){
+    var footer=document.querySelector(".sadti-global-footer");
+    if(!footer){return}
+    var infoPage=document.querySelector(".about-page,.contact-page");
+    if(infoPage){
+      footer.style.top=Math.round(window.innerHeight-48)+"px";
+      return;
+    }
+    var projectPage=document.querySelector(".project-page");
+    var page=document.querySelector(".sadti-home")||document.querySelector(".home-page,.project-page")||document.body;
+    var rect=page.getBoundingClientRect();
+    var pageTop=(window.scrollY||window.pageYOffset)+rect.top;
+    var pageHeight=Math.max(page.scrollHeight,page.offsetHeight,window.innerHeight);
+    var pageBottom=pageTop+pageHeight;
+    var bottomGap=projectPage?190:48;
+    var top=Math.max(window.innerHeight-bottomGap,pageBottom-bottomGap);
+    footer.style.setProperty("--footer-js-top",Math.round(top)+"px");
+    footer.style.top=Math.round(top)+"px";
+  }
+  function enhance(){
+    enhanceBand();
+    enhanceGlobalHeader();
+    enhanceSadtiHome();
+    placeGlobalFooter();
+    requestAnimationFrame(placeGlobalFooter);
+    setTimeout(placeGlobalFooter,250);
+  }
+  enhance();
+  var mo=new MutationObserver(enhance);
+  mo.observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+<script>
+(function(){
+  function lockPortfolioHeader(){
+    var nav=document.querySelector('.sadti-corner-nav');
+    if(!nav){return;}
+    if(window.matchMedia('(max-width: 40rem)').matches){
+      nav.style.setProperty('position','fixed','important');
+      nav.style.setProperty('top','28px','important');
+      nav.style.setProperty('right','16px','important');
+      nav.style.setProperty('left','auto','important');
+      nav.style.setProperty('width','132px','important');
+      nav.style.setProperty('max-width','132px','important');
+      nav.style.setProperty('transform','none','important');
+      nav.style.setProperty('display','flex','important');
+      nav.style.setProperty('justify-content','space-between','important');
+      nav.style.setProperty('gap','0','important');
+    }else{
+      ['position','top','right','left','width','max-width','transform','display','justify-content','gap'].forEach(function(prop){
+        nav.style.removeProperty(prop);
+      });
+    }
+  }
+  window.addEventListener('resize',lockPortfolioHeader);
+  window.addEventListener('load',lockPortfolioHeader);
+  setTimeout(lockPortfolioHeader,50);
+  setTimeout(lockPortfolioHeader,250);
+})();
+</script>
+<script>
+(function(){
+  function lockMobileLinks(){
+    var mobile=document.querySelector('.mobile-corner-links');
+    if(!mobile){return;}
+    var isSmall=(window.innerWidth||document.documentElement.clientWidth)<=640;
+    mobile.style.setProperty('display',isSmall?'flex':'none','important');
+    mobile.style.setProperty('position','fixed','important');
+    mobile.style.setProperty('z-index','3000','important');
+    mobile.style.setProperty('top','28px','important');
+    mobile.style.setProperty('right','16px','important');
+    mobile.style.setProperty('left','auto','important');
+    mobile.style.setProperty('flex-direction','column','important');
+    mobile.style.setProperty('align-items','flex-end','important');
+    mobile.style.setProperty('gap','10px','important');
+  }
+  window.addEventListener('resize',lockMobileLinks);
+  window.addEventListener('load',lockMobileLinks);
+  setTimeout(lockMobileLinks,50);
+  setTimeout(lockMobileLinks,300);
+})();
+</script>
+</body>
 </html>
