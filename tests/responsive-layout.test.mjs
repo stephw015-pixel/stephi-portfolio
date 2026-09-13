@@ -88,6 +88,7 @@ try {
         const portraitRect = portrait?.getBoundingClientRect();
         return {
           overflow: document.documentElement.scrollWidth - innerWidth,
+          stylesheetUrl: document.querySelector('link[href*="index-CUFsaUBw.css"]')?.href || '',
           introOverflow: intro.map((paragraph) => paragraph.scrollWidth - paragraph.clientWidth),
           introRects: intro.map((paragraph) => { const rect = paragraph.getBoundingClientRect(); return { left: rect.left, right: rect.right }; }),
           nav: navRect ? { left: navRect.left, right: navRect.right, display: getComputedStyle(nav).display, visibility: getComputedStyle(nav).visibility } : null,
@@ -97,8 +98,9 @@ try {
       })()`,
       returnByValue: true,
     });
-    const { overflow, introOverflow, introRects, nav, portrait, rects } = evaluation.result.value;
+    const { overflow, stylesheetUrl, introOverflow, introRects, nav, portrait, rects } = evaluation.result.value;
     assert.ok(overflow <= 2, `${width}px: page overflows horizontally by ${overflow}px`);
+    assert.ok(stylesheetUrl.includes('?v='), `${width}px: stylesheet URL does not invalidate stale browser caches`);
     introOverflow.forEach((amount, index) => assert.ok(amount <= 1, `${width}px: intro line ${index + 1} clips by ${amount}px`));
     introRects.forEach((rect, index) => assert.ok(rect.left >= -1 && rect.right <= width + 1, `${width}px: intro line ${index + 1} escapes the viewport`));
     assert.ok(nav && nav.display !== 'none' && nav.visibility !== 'hidden', `${width}px: primary corner navigation is not visible`);
