@@ -4204,3 +4204,161 @@ body:before{
     );
   }
 }
+
+/* Authoritative responsive homepage layout: cards stay in document flow */
+body:has(.home-page) .home-page,
+body:has(.home-page) .sadti-home{
+  min-height:0!important;
+  height:auto!important;
+}
+
+body:has(.home-page) .sadti-home{
+  box-sizing:border-box!important;
+  padding:350px clamp(24px, 5vw, 76px) 72px!important;
+}
+
+body:has(.home-page) .sadti-copy{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  width:min(720px, 100%)!important;
+  max-width:100%!important;
+  margin:0 auto!important;
+  transform:none!important;
+}
+
+body:has(.home-page) .sadti-work{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:clamp(88px, 9vw, 138px)!important;
+  width:min(1200px, 100%)!important;
+  max-width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:110px auto 0!important;
+  padding:0!important;
+}
+
+body:has(.home-page) .sadti-project-card,
+body:has(.home-page) .sadti-project-card:nth-child(n){
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  align-self:flex-start!important;
+  display:block!important;
+  box-sizing:border-box!important;
+  width:clamp(420px, 46vw, 560px)!important;
+  max-width:72%!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  transform:none!important;
+}
+
+body:has(.home-page) .sadti-project-card:nth-child(even){
+  align-self:flex-end!important;
+}
+
+body:has(.home-page) .sadti-project-card img,
+body:has(.home-page) .sadti-project-card:nth-child(n) img,
+body:has(.home-page) .sadti-project-card video{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  aspect-ratio:16 / 10!important;
+  object-fit:cover!important;
+}
+
+body:has(.home-page) .sadti-project-card:nth-child(6) img{
+  object-fit:contain!important;
+  background:#fff!important;
+}
+
+body:has(.home-page) .sadti-project-card strong{
+  white-space:normal!important;
+}
+
+body:has(.home-page) .sadti-home > .home-footer{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:100%!important;
+  max-width:1200px!important;
+  height:auto!important;
+  margin:clamp(140px, 16vw, 230px) auto 0!important;
+}
+
+@media(min-width:40.0625rem) and (max-width:64rem){
+  body:has(.home-page) .sadti-home{
+    padding-top:405px!important;
+  }
+
+  body:has(.home-page) .sadti-work{
+    gap:clamp(84px, 11vw, 118px)!important;
+    margin-top:92px!important;
+  }
+
+  body:has(.home-page) .sadti-project-card,
+  body:has(.home-page) .sadti-project-card:nth-child(n){
+    width:clamp(390px, 68vw, 610px)!important;
+    max-width:76%!important;
+  }
+}
+
+@media(max-width:40rem){
+  body:has(.home-page) .sadti-home{
+    padding:405px 16px 48px!important;
+  }
+
+  body:has(.home-page) .sadti-copy{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+  }
+
+  body:has(.home-page) .sadti-work{
+    gap:72px!important;
+    width:100%!important;
+    margin-top:76px!important;
+  }
+
+  body:has(.home-page) .sadti-project-card,
+  body:has(.home-page) .sadti-project-card:nth-child(n){
+    align-self:stretch!important;
+    width:100%!important;
+    max-width:100%!important;
+  }
+
+  body:has(.home-page) .sadti-card__meta{
+    margin-top:12px!important;
+    font-size:13px!important;
+    line-height:1.25!important;
+  }
+
+  body:has(.home-page) .sadti-project-card strong{
+    margin-top:5px!important;
+    font-size:16px!important;
+    line-height:1.2!important;
+  }
+
+  body:has(.home-page) .sadti-project-card em{
+    margin-top:6px!important;
+    max-width:34ch!important;
+    font-size:14px!important;
+    line-height:1.3!important;
+  }
+}
