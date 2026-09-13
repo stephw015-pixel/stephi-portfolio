@@ -84,22 +84,31 @@ try {
         const intro = [...document.querySelectorAll('.sadti-copy p')];
         const nav = innerWidth <= 640 ? document.querySelector('.mobile-corner-links') : document.querySelector('.sadti-global-header .sadti-corner-nav');
         const navRect = nav?.getBoundingClientRect();
+        const portrait = document.querySelector('.sadti-global-header .sadti-portrait-link');
+        const portraitRect = portrait?.getBoundingClientRect();
         return {
           overflow: document.documentElement.scrollWidth - innerWidth,
           introOverflow: intro.map((paragraph) => paragraph.scrollWidth - paragraph.clientWidth),
           introRects: intro.map((paragraph) => { const rect = paragraph.getBoundingClientRect(); return { left: rect.left, right: rect.right }; }),
           nav: navRect ? { left: navRect.left, right: navRect.right, display: getComputedStyle(nav).display, visibility: getComputedStyle(nav).visibility } : null,
+          portrait: portraitRect ? { width: portraitRect.width, height: portraitRect.height, display: getComputedStyle(portrait).display, visibility: getComputedStyle(portrait).visibility } : null,
           rects,
         };
       })()`,
       returnByValue: true,
     });
-    const { overflow, introOverflow, introRects, nav, rects } = evaluation.result.value;
+    const { overflow, introOverflow, introRects, nav, portrait, rects } = evaluation.result.value;
     assert.ok(overflow <= 2, `${width}px: page overflows horizontally by ${overflow}px`);
     introOverflow.forEach((amount, index) => assert.ok(amount <= 1, `${width}px: intro line ${index + 1} clips by ${amount}px`));
     introRects.forEach((rect, index) => assert.ok(rect.left >= -1 && rect.right <= width + 1, `${width}px: intro line ${index + 1} escapes the viewport`));
     assert.ok(nav && nav.display !== 'none' && nav.visibility !== 'hidden', `${width}px: primary corner navigation is not visible`);
     assert.ok(nav.left >= -1 && nav.right <= width + 1, `${width}px: primary corner navigation escapes the viewport`);
+    if (width <= 1120) {
+      assert.ok(portrait && (portrait.display === 'none' || portrait.visibility === 'hidden' || portrait.width === 0), `${width}px: header portrait expands into page content`);
+    } else {
+      assert.ok(portrait && portrait.width >= 48 && portrait.width <= 110, `${width}px: header portrait has an invalid width`);
+      assert.ok(Math.abs(portrait.width - portrait.height) <= 2, `${width}px: header portrait is distorted`);
+    }
     assert.equal(rects.length, 7, `${width}px: expected seven project cards`);
     rects.forEach((rect, index) => {
       assert.ok(rect.left >= -1 && rect.right <= width + 1, `${width}px: card ${index + 1} escapes the viewport`);
