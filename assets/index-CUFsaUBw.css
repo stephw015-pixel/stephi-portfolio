@@ -3482,6 +3482,14 @@ body:has(.home-page) .site-nav{
   }
 }
 
+/* Keep the shared portfolio index clear of every page at tablet widths. */
+@media(min-width:40.0625rem) and (max-width:64rem){
+  body:has(.project-page) .project-canvas,
+  body:has(.info-page) .info-canvas{
+    margin-top:100px!important;
+  }
+}
+
 /* Responsive safety pass: keep page content out from under the fixed index header */
 @media(min-width:70.0625rem){
   body:has(.home-page) .sadti-copy{
