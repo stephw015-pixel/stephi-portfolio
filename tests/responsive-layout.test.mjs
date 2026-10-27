@@ -88,6 +88,7 @@ try {
         const portraitRect = portrait?.getBoundingClientRect();
         return {
           overflow: document.documentElement.scrollWidth - innerWidth,
+          roleLabels: [...document.querySelectorAll('.sadti-list-header a')].map((link) => link.textContent.trim()),
           stylesheetUrl: document.querySelector('link[href*="index-CUFsaUBw.css"]')?.href || '',
           introOverflow: intro.map((paragraph) => paragraph.scrollWidth - paragraph.clientWidth),
           introRects: intro.map((paragraph) => { const rect = paragraph.getBoundingClientRect(); return { left: rect.left, right: rect.right }; }),
@@ -98,8 +99,17 @@ try {
       })()`,
       returnByValue: true,
     });
-    const { overflow, stylesheetUrl, introOverflow, introRects, nav, portrait, rects } = evaluation.result.value;
+    const { overflow, roleLabels, stylesheetUrl, introOverflow, introRects, nav, portrait, rects } = evaluation.result.value;
     assert.ok(overflow <= 2, `${width}px: page overflows horizontally by ${overflow}px`);
+    assert.deepEqual(roleLabels, [
+      'PRODUCT DESIGN',
+      'CAMPAIGN DIRECTION',
+      'MOTION DIRECTION',
+      'CREATIVE DIRECTION',
+      'BRAND DESIGN',
+      'UX & ACCESSIBILITY',
+      'ILLUSTRATION',
+    ], `${width}px: portfolio index does not communicate the work types`);
     assert.ok(stylesheetUrl.includes('?v='), `${width}px: stylesheet URL does not invalidate stale browser caches`);
     introOverflow.forEach((amount, index) => assert.ok(amount <= 1, `${width}px: intro line ${index + 1} clips by ${amount}px`));
     introRects.forEach((rect, index) => assert.ok(rect.left >= -1 && rect.right <= width + 1, `${width}px: intro line ${index + 1} escapes the viewport`));
